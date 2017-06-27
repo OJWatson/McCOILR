@@ -26,3 +26,14 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"McCOILR_McCOIL_categorical_cpp", (DL_FUNC) &McCOILR_McCOIL_categorical_cpp, 1},
+    {"McCOILR_McCOIL_proportional_cpp", (DL_FUNC) &McCOILR_McCOIL_proportional_cpp, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_McCOILR(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}
