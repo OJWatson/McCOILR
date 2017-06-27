@@ -55,4 +55,4 @@ library(McCOILR)
 
 #### Asking a question
 
-For bug reports, feature requests, contributions, use github's [issue system.](https://github.com/OJWatson/outbreakteachR/issues)
+For bug reports, feature requests, contributions, use github's [issue system.](https://github.com/OJWatson/McCOILR/issues)
