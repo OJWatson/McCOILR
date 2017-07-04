@@ -24,13 +24,6 @@
 #' @export
 #' 
 
-# The following commands are needed to ensure that the roxygen2
-# package, which deals with documenting the package, does not conflict
-# with the Rcpp package. Do not alter!
-#' @useDynLib McCOILR
-#' @importFrom Rcpp evalCpp
-#' @exportPattern '^[[:alpha:]]+'
-
 McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=20, totalrun=10000, burnin=1000, M0=15, e1=0.05, e2=0.05, err_method=1, path=getwd(), output="output.txt" ){
 
 
