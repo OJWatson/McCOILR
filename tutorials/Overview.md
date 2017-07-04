@@ -454,8 +454,6 @@ for(i in 1:100){
   ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,
                                   ".txt_summary.txt"),sep="\t")
   
-  
-
 }
 
 ## Grab the estimated mean COI and lets plot these
