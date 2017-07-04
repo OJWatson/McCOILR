@@ -552,6 +552,8 @@ didehpc::web_login()
 root &lt;- file.path(workdir, &quot;contexts&quot;)
 packages.vector &lt;- c(&quot;Rcpp&quot;,&quot;McCOILR&quot;)
 context::context_log_start()
+
+## set up context
 ctx &lt;- context::context_save(root,
                              packages = packages.vector,
                              package_sources= provisionr::package_sources(github=c(&quot;OJWatson/McCOILR&quot;)))
