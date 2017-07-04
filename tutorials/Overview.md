@@ -127,8 +127,9 @@ head(data)
 ```r
 # create results directory and run analysis
 dir.create(path = "cat_output")
-out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20, totalrun=1000, burnin=100, M0=15, e1=0.05, 
-                   e2=0.05, err_method=3, path="cat_output", output="output_test.txt" )
+out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20,
+                              totalrun=1000, burnin=100, M0=15, e1=0.05, e2=0.05,
+                              err_method=3, path="cat_output", output="output_test.txt" )
 ```
 
 ```
@@ -261,8 +262,9 @@ head(dataA1)
 ```r
 # create results directory and run analysis
 dir.create(path="prop_output")
-out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100, M0=15, epsilon=0.02, err_method=3, 
-                                path="prop_output", output="output_test.txt" )
+out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100,
+                                M0=15, epsilon=0.02, err_method=3, path="prop_output",
+                                output="output_test.txt" )
 ```
 
 ```
@@ -276,7 +278,7 @@ out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin
 ## Iter 4000 out of 5000
 ## Iter 4500 out of 5000
 ## Iter 5000 out of 5000
-## Time = 35.00 s
+## Time = 39.00 s
 ```
 
 The R functions now return the summary outputs, just for ease of looking at the 
@@ -293,16 +295,17 @@ str(out_cat)
 ##  $ file         : Factor w/ 1 level "output_test.txt": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ CorP         : Factor w/ 4 levels "C","e1","e2",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ name         : Factor w/ 90 levels "e1","e2","ind1",..: 3 14 25 30 31 32 33 34 35 4 ...
-##  $ mean         : Factor w/ 63 levels "0.0132025622222222",..: 59 59 59 58 60 59 60 60 58 62 ...
-##  $ median       : Factor w/ 63 levels "0.0098235","0.010386",..: 59 59 59 58 60 59 60 60 58 62 ...
-##  $ sd           : Factor w/ 89 levels "0","0.00163",..: 61 63 73 1 75 72 74 69 64 80 ...
-##  $ quantile0.025: Factor w/ 61 levels "0.000145","0.000502",..: 59 59 59 58 59 59 59 59 58 61 ...
-##  $ quantile0.975: Factor w/ 70 levels "0.04479","0.05231305",..: 64 65 67 58 67 66 67 66 64 70 ...
+##  $ mean         : Factor w/ 63 levels "0.0158697766666667",..: 59 59 59 58 60 60 60 60 58 62 ...
+##  $ median       : Factor w/ 63 levels "0.012397","0.012826",..: 59 59 59 58 60 59 60 60 58 62 ...
+##  $ sd           : Factor w/ 88 levels "0","0.0011","0.00185",..: 61 64 77 1 74 72 79 70 63 84 ...
+##  $ quantile0.025: Factor w/ 61 levels "0.000204","0.000341",..: 59 59 59 58 59 59 59 59 58 60 ...
+##  $ quantile0.975: Factor w/ 69 levels "0.051711","0.05232515",..: 63 63 64 58 65 64 66 64 62 69 ...
 ```
 
 ```r
 ## Have a look at the categorical output COI distribution
-hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),main = "Categorical Mean COI", xlab="COI")
+hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),
+     main = "Categorical Mean COI", xlab="COI")
 ```
 
 ![](Overview_files/figure-html/View output-1.png)<!-- -->
@@ -317,16 +320,17 @@ str(out_prop)
 ##  $ file         : Factor w/ 1 level "output_test.txt": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ CorP         : Factor w/ 3 levels "C","epsilon",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ name         : Factor w/ 144 levels "epsilon","ind1",..: 2 13 24 32 33 34 35 36 37 3 ...
-##  $ mean         : Factor w/ 114 levels "0.0100813442857143",..: 109 109 109 113 109 111 114 109 109 109 ...
-##  $ median       : Factor w/ 114 levels "0.006793","0.007087",..: 109 109 109 113 109 111 114 109 109 109 ...
-##  $ sd           : Factor w/ 139 levels "0","0.00228",..: 119 114 34 138 120 131 139 111 56 123 ...
-##  $ quantile0.025: Factor w/ 113 levels "0.000132","0.000233",..: 107 107 107 110 107 109 112 107 107 107 ...
-##  $ quantile0.975: Factor w/ 117 levels "0.032866775",..: 111 111 110 117 111 113 109 110 110 111 ...
+##  $ mean         : Factor w/ 114 levels "0.0109729281632653",..: 109 109 109 113 109 111 114 109 109 109 ...
+##  $ median       : Factor w/ 114 levels "0.007336","0.007734",..: 109 109 109 113 109 111 114 109 109 109 ...
+##  $ sd           : Factor w/ 140 levels "0","0.00285",..: 120 118 1 137 122 132 140 116 1 123 ...
+##  $ quantile0.025: Factor w/ 111 levels "0.000173","0.000185",..: 107 107 107 109 107 108 110 107 107 107 ...
+##  $ quantile0.975: Factor w/ 116 levels "0.033442525",..: 111 111 110 116 111 113 109 110 110 111 ...
 ```
 
 ```r
 ## Have a look at the proportional output COI distribution
-hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),main = "Proportional Mean COI", xlab="COI")
+hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),
+     main = "Proportional Mean COI", xlab="COI")
 ```
 
 ![](Overview_files/figure-html/View output-2.png)<!-- -->
@@ -360,8 +364,14 @@ barcode96 <- replicate(sample(3:105,size = 96,replace = FALSE),n = 100)
 workdir <- "M:/OJ/McCOILR_Results"
 didehpc::didehpc_config_global(workdir=workdir,
                                credentials="C:\\Users\\Oliver\\.smbcredentials",
-                               temp=didehpc::path_mapping("tmp","T:","//fi--didef3.dide.ic.ac.uk/tmp","T:"),
-                               home=didehpc::path_mapping("OJ","M:","//fi--didef3.dide.ic.ac.uk/Malaria","M:"))
+                               temp=didehpc::path_mapping("tmp",
+                                                          "T:",
+                                                          "//fi--didef3.dide.ic.ac.uk/tmp",
+                                                          "T:"),
+                               home=didehpc::path_mapping("OJ",
+                                                          "M:",
+                                                          "//fi--didef3.dide.ic.ac.uk/Malaria",
+                                                          "M:"))
 didehpc::web_login()
 root <- file.path(workdir, "contexts")
 packages.vector <- c("Rcpp","McCOILR")
@@ -404,11 +414,17 @@ dir.create(paste0(workdir,"/Kihihi_96BarcodeTest_50maxCOI"))
 
 workers <- obj$submit_workers(50)
 grp <- queuer::qlapply(X = paramList[1:100],obj = obj, timeout=0, 
-                       FUN = function(x){return(McCOIL_categorical(data = x$data,maxCOI = x$maxCOI, threshold_ind = x$threshold_ind,
-                                                                   threshold_site = x$threshold_site, totalrun = x$totalrun, 
-                                                                   burnin = x$burnin, M0 = x$M0, e1 = x$e1, e2 = x$e2, 
-                                                                   err_method = x$err_method, path = x$path, output = x$output)
-                                                )},
+                       FUN = function(x){
+                           return(McCOIL_categorical(data = x$data,
+                                                     maxCOI = x$maxCOI, 
+                                                     threshold_ind = x$threshold_ind,
+                                                     threshold_site = x$threshold_site, 
+                                                     totalrun = x$totalrun, 
+                                                     burnin = x$burnin, M0 = x$M0, 
+                                                     e1 = x$e1, e2 = x$e2,
+                                                     err_method = x$err_method, 
+                                                     path = x$path, output = x$output))
+                       },
                        name = "24_barcode")
 
 ## --------------------------------------------------------------------------##
@@ -431,9 +447,12 @@ ninety6 <- list()
 
 for(i in 1:100){
     
-  twenty4[[i]] <- read.csv(paste0("Kihihi_24_BarcodeTest_50maxCOI/24_",i,".txt_summary.txt"),sep="\t")
-  fourty8[[i]] <- read.csv(paste0("Kihihi_48_BarcodeTest_50maxCOI/48_",i,".txt_summary.txt"),sep="\t")
-  ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,".txt_summary.txt"),sep="\t")
+  twenty4[[i]] <- read.csv(paste0("Kihihi_24_BarcodeTest_50maxCOI/24_",i,
+                                  ".txt_summary.txt"),sep="\t")
+  fourty8[[i]] <- read.csv(paste0("Kihihi_48_BarcodeTest_50maxCOI/48_",i,
+                                  ".txt_summary.txt"),sep="\t")
+  ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,
+                                  ".txt_summary.txt"),sep="\t")
   
   
 
@@ -485,7 +504,9 @@ for(i in floor(seq(2,length(MCMC_24)-2,length.out = 9))){
 par(mfrow=c(3,3))
 for(i in floor(seq(2,length(MCMC_96)-2,length.out = 9))){
     plot(MCMC_96[[i]][seq(1,100000,50)],type="l",
-         ylab = ifelse(length(grep(pattern = "assay",as.character(ninety6[[99]]$name[i-1]))==1),"Freq","COI"),
+         ylab = ifelse(length(grep(pattern = "assay",
+                                   as.character(ninety6[[99]]$name[i-1]))==1),
+                       "Freq","COI"),
          main = ninety6[[99]]$name[i-1])
 }
 ```

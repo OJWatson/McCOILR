@@ -58,8 +58,9 @@ head(data)
 
 # create results directory and run analysis
 dir.create(path = "cat_output")
-out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20, totalrun=1000, burnin=100, M0=15, e1=0.05, 
-                   e2=0.05, err_method=3, path="cat_output", output="output_test.txt" )
+out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20,
+                              totalrun=1000, burnin=100, M0=15, e1=0.05, e2=0.05,
+                              err_method=3, path="cat_output", output="output_test.txt" )
 
 
 ## proportional test
@@ -77,8 +78,9 @@ head(dataA1)
 
 # create results directory and run analysis
 dir.create(path="prop_output")
-out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100, M0=15, epsilon=0.02, err_method=3, 
-                                path="prop_output", output="output_test.txt" )
+out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100,
+                                M0=15, epsilon=0.02, err_method=3, path="prop_output",
+                                output="output_test.txt" )
 
 
 ```
@@ -92,14 +94,16 @@ results:
 str(out_cat)
 
 ## Have a look at the categorical output COI distribution
-hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),main = "Categorical Mean COI", xlab="COI")
+hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),
+     main = "Categorical Mean COI", xlab="COI")
 
 
 ## view summary data.frame for proportional
 str(out_prop)
 
 ## Have a look at the proportional output COI distribution
-hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),main = "Proportional Mean COI", xlab="COI")
+hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),
+     main = "Proportional Mean COI", xlab="COI")
 
 ```
 
@@ -132,8 +136,14 @@ barcode96 <- replicate(sample(3:105,size = 96,replace = FALSE),n = 100)
 workdir <- "M:/OJ/McCOILR_Results"
 didehpc::didehpc_config_global(workdir=workdir,
                                credentials="C:\\Users\\Oliver\\.smbcredentials",
-                               temp=didehpc::path_mapping("tmp","T:","//fi--didef3.dide.ic.ac.uk/tmp","T:"),
-                               home=didehpc::path_mapping("OJ","M:","//fi--didef3.dide.ic.ac.uk/Malaria","M:"))
+                               temp=didehpc::path_mapping("tmp",
+                                                          "T:",
+                                                          "//fi--didef3.dide.ic.ac.uk/tmp",
+                                                          "T:"),
+                               home=didehpc::path_mapping("OJ",
+                                                          "M:",
+                                                          "//fi--didef3.dide.ic.ac.uk/Malaria",
+                                                          "M:"))
 didehpc::web_login()
 root <- file.path(workdir, "contexts")
 packages.vector <- c("Rcpp","McCOILR")
@@ -176,11 +186,17 @@ dir.create(paste0(workdir,"/Kihihi_96BarcodeTest_50maxCOI"))
 
 workers <- obj$submit_workers(50)
 grp <- queuer::qlapply(X = paramList[1:100],obj = obj, timeout=0, 
-                       FUN = function(x){return(McCOIL_categorical(data = x$data,maxCOI = x$maxCOI, threshold_ind = x$threshold_ind,
-                                                                   threshold_site = x$threshold_site, totalrun = x$totalrun, 
-                                                                   burnin = x$burnin, M0 = x$M0, e1 = x$e1, e2 = x$e2, 
-                                                                   err_method = x$err_method, path = x$path, output = x$output)
-                                                )},
+                       FUN = function(x){
+                           return(McCOIL_categorical(data = x$data,
+                                                     maxCOI = x$maxCOI, 
+                                                     threshold_ind = x$threshold_ind,
+                                                     threshold_site = x$threshold_site, 
+                                                     totalrun = x$totalrun, 
+                                                     burnin = x$burnin, M0 = x$M0, 
+                                                     e1 = x$e1, e2 = x$e2,
+                                                     err_method = x$err_method, 
+                                                     path = x$path, output = x$output))
+                       },
                        name = "24_barcode")
 
 ## --------------------------------------------------------------------------##
@@ -204,12 +220,13 @@ ninety6 <- list()
 
 for(i in 1:100){
     
-  twenty4[[i]] <- read.csv(paste0("Kihihi_24_BarcodeTest_50maxCOI/24_",i,".txt_summary.txt"),sep="\t")
-  fourty8[[i]] <- read.csv(paste0("Kihihi_48_BarcodeTest_50maxCOI/48_",i,".txt_summary.txt"),sep="\t")
-  ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,".txt_summary.txt"),sep="\t")
+  twenty4[[i]] <- read.csv(paste0("Kihihi_24_BarcodeTest_50maxCOI/24_",i,
+                                  ".txt_summary.txt"),sep="\t")
+  fourty8[[i]] <- read.csv(paste0("Kihihi_48_BarcodeTest_50maxCOI/48_",i,
+                                  ".txt_summary.txt"),sep="\t")
+  ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,
+                                  ".txt_summary.txt"),sep="\t")
   
-  
-
 }
 
 ## Grab the estimated mean COI and lets plot these
@@ -254,7 +271,9 @@ for(i in floor(seq(2,length(MCMC_24)-2,length.out = 9))){
 par(mfrow=c(3,3))
 for(i in floor(seq(2,length(MCMC_96)-2,length.out = 9))){
     plot(MCMC_96[[i]][seq(1,100000,50)],type="l",
-         ylab = ifelse(length(grep(pattern = "assay",as.character(ninety6[[99]]$name[i-1]))==1),"Freq","COI"),
+         ylab = ifelse(length(grep(pattern = "assay",
+                                   as.character(ninety6[[99]]$name[i-1]))==1),
+                       "Freq","COI"),
          main = ninety6[[99]]$name[i-1])
 }
 
