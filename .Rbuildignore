@@ -1,4 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.travis.yml
-^tutorials*
+^.travis.yml$
+^tutorials$
+^inst/extdata/cat_output$
+^inst/extdata/prop_output$

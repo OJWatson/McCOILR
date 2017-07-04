@@ -30,7 +30,7 @@ McCOIL_proportional(dataA1, dataA2, maxCOI = 25, totalrun = 10000,
 
 \item{path}{The default is the current directory.}
 
-\item{output}{The name of output file. The default is “output.txt”.}
+\item{output}{The name of output file. The default is output.txt.}
 }
 \value{
 summary of output as data.frame

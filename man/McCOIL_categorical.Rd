@@ -35,7 +35,7 @@ McCOIL_categorical(data, maxCOI = 25, threshold_ind = 20,
 
 \item{path}{The default is the current directory.}
 
-\item{output}{The name of output file. The default is “output.txt”.}
+\item{output}{The name of output file. The default is output.txt.}
 }
 \value{
 return summary of output as data.frame

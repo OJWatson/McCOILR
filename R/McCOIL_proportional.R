@@ -11,7 +11,7 @@
 #' @param M0 Initial COI. The default is 15.
 #' @param epsilon The level of measurement error (eest). The default is 0.2.
 #' @param path The default is the current directory.
-#' @param output The name of output file. The default is “output.txt”.
+#' @param output The name of output file. The default is output.txt.
 #' @param err_method The default is 1. 
 #' 1: use pre-specified e1 and e2 and treat them as constants. 
 #' 2: use likelihood-free sampling for e1 and e2;

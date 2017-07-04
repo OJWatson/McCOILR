@@ -4,13 +4,13 @@ author: "OJ Watson"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
     html_document:
-    toc: yes
-css: knitr.css
-code_folding: show
-fig_caption: yes
-theme: readable
-keep_md: yes
-toc_float: yes
+        toc: yes
+        css: knitr.css
+        code_folding: show
+        fig_caption: yes
+        theme: readable
+        keep_md: yes
+        toc_float: yes
 
 ---
     
@@ -30,7 +30,7 @@ framework I use. All rights refer to the writers of the original c code.
 
 The package can be installed as follows, assuming devtools has been installed. 
 
-```{r Load package, include=TRUE, message = FALSE, warning = FALSE}
+```{r Load package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## first let's install the package
 devtools::install_github("OJWatson/McCOILR")
@@ -44,7 +44,7 @@ library(McCOILR)
 
 The package carries out the same 2 R functions as before, which are demonstrated below: 
 
-```{r Test Package, include=TRUE, message = FALSE, warning = FALSE}
+```{r Test Package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## categorical test
 
@@ -86,7 +86,7 @@ out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin
 The R functions now return the summary outputs, just for ease of looking at the 
 results:
 
-```{r View output, include=TRUE, message = FALSE, warning = FALSE}
+```{r View output, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## view summary data.frame for categorical
 str(out_cat)

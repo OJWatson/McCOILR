@@ -4,6 +4,17 @@
 #include <Rcpp.h>
 #include <string>
 
+//' @title
+//' McCOIL_categorical_cpp
+//' @description
+//' Categorical cpp code
+//' 
+//' @param paramList A list of parameters created with equivalent R function
+//' 
+//' @details
+//' \code{McCOIL_categorical_cpp} implements THE REAL McCOIL categorical method
+//' 
+//' @export
 // [[Rcpp::export]]
 void McCOIL_categorical_cpp(Rcpp::List paramList) {
 

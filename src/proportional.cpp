@@ -3,6 +3,17 @@
 #include <Rcpp.h>
 #include <string>
 
+//' @title
+//' McCOIL_proportional_cpp
+//' @description
+//' Proportional cpp code
+//' 
+//' @param paramList A list of parameters created with equivalent R function
+//' 
+//' @details
+//' \code{McCOIL_proportional_cpp} implements THE REAL McCOIL proportional method
+//' 
+//' @export
 // [[Rcpp::export]]
 void McCOIL_proportional_cpp(Rcpp::List paramList) {
 
