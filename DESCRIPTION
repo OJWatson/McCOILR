@@ -6,7 +6,7 @@ Date: 2017-06-20
 Author: OJ Watson
 Maintainer: OJ Watson <o.watson15@imperial.ac.uk>
 Description: Wrapper for THE REAL McCOIL in Rcpp, so that package can be more easily run on distributed computing services and cluster infrastructure. 
-License: GNU GPLv3
+License: MIT
 Imports: Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.1
