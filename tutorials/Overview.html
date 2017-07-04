@@ -556,7 +556,10 @@ context::context_log_start()
 ## set up context
 ctx &lt;- context::context_save(root,
                              packages = packages.vector,
-                             package_sources= provisionr::package_sources(github=c(&quot;OJWatson/McCOILR&quot;)))
+                             package_sources = provisionr::package_sources(
+                                 github=c(&quot;OJWatson/McCOILR&quot;)
+                             )
+)
 
 config &lt;- didehpc::didehpc_config(use_workers = TRUE)
 obj &lt;- didehpc::queue_didehpc(ctx, config = config)
