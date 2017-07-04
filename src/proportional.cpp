@@ -51,7 +51,7 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
 	int Strue_accept[(n+1)][(k+1)];
 	int c_accept=0;
 	double c_can;
-	double q1=0.0, q2=0.0;
+	double q1=0.0, q2=0.0; // unused variables to be commented out TODO: Comment all unuseds
 	for (i=1;i<=n;i++){
 		M[i]= M0[i-1];
 		Mcan[i]= M[i];
