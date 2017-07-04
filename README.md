@@ -13,7 +13,7 @@ the original [project](https://github.com/Greenhouse-Lab/THEREALMcCOIL), and the
 this wrapper in the hope that it might be helpful for others, and provided a tutorial for basic use.
 
 ***
-> To view the tutorial please click [here](https://cdn.rawgit.com/OJWatson/McCOILR/b9689be/tutorials/Overview.html).
+> To view the tutorial please click [here](https://cdn.rawgit.com/OJWatson/McCOILR/5757ea3/tutorials/Overview.html).
 
 ***
 
