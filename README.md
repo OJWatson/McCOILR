@@ -10,7 +10,7 @@ and population allele frequencies using SNP data obtained from Sequenom or simil
 simply created to aid incorporating COI estimation more easily within distributed computing pipelines, and I
 claim no ownership over the original source code, and all attribution and acknowledgement should be referred to
 the original [project](https://github.com/Greenhouse-Lab/THEREALMcCOIL), and the [associated publication](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005348). I have simply provided
-this wrapper in the hope that it might be helpful for others, and provided a tutorial for basic use.
+this wrapper in the hope that it might be helpful for others, and have provided a tutorial for basic use.
 
 ***
 > To view the tutorial please click [here](https://cdn.rawgit.com/OJWatson/McCOILR/5757ea3/tutorials/Overview.html).
