@@ -24,9 +24,9 @@ McCOIL_proportional(dataA1, dataA2, maxCOI = 25, totalrun = 10000,
 \item{epsilon}{The level of measurement error (eest). The default is 0.2.}
 
 \item{err_method}{The default is 1. 
-1: use pre-specified e1 and e2 and treat them as constants. 
-2: use likelihood-free sampling for e1 and e2;
-3: e1 and e2 are estimated with COI and allele frequencies}
+1: use pre-specified epsilon; 
+2: use likelihood-free sampling for epsilon; 
+3: update epsilon according to likelihood (for 2 and 3, pre-specified epsilon was used as initial value)}
 
 \item{path}{The default is the current directory.}
 
