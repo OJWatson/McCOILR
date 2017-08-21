@@ -5,7 +5,8 @@ double logLike(int M, double P, double dataA1, double dataA2, double Strue, doub
 	double llobs = 0;
 	double lltrue = 0.0;
 	double alpha = 0.0, beta = 0.0;
-	int order_P, k, l = 0;
+	int order_P = 0;
+	//int k, l = 0; not needed so commented, but was in original c version.
 		
 	if ((dataA1<0)||(dataA2<0)){
 		return 0;
