@@ -17,15 +17,16 @@
 // [[Rcpp::export]]
 void McCOIL_proportional_cpp(Rcpp::List paramList) {
     
-    ////////can be changed///////
+    ////////can be changed/////////
     double varP=0.1;  
     double varS=0.1;
     double varE=0.0001;
     double upper_bound_c=0.1; //epsilon
     
     ///////don't change////////
-    double temp_l_est=0;
-    double temp_l_true=0;
+    // both unused so commented out
+    // double temp_l_est=0;
+    // double temp_l_true=0;
     
     int i=0, j=0, prime=0, x=0, y=0;
     double sumori=0, sumcan=0; 

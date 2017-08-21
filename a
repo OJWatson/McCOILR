@@ -1,0 +1,788 @@
+<!DOCTYPE html> <html lang="en"> <!-- Content Copyright Macro International -->
+<!-- Page generated 2017-08-11 12:23:16 on server 1 by CommonSpot Build 10.0.1.184 (2016-07-28 20:03:45) -->
+<!-- JavaScript & DHTML Code Copyright &copy; 1998-2016, PaperThin, Inc. All Rights Reserved. --> <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="Description" id="Description" content="login_main" />
+<meta name="Generator" id="Generator" content="CommonSpot Build 10.0.1.184" />
+<title>The DHS Program - login_main</title> <script>
+var jsDlgLoader = '/data/dataset_admin/loader.cfm';
+var jsSiteResourceLoader = '/cs-resources.cfm?r=';
+var jsSiteResourceSettings = {canCombine: false, canMinify: false};
+</script>
+<!-- beg (1) PrimaryResources -->
+<script type="text/javascript" src="/commonspot/javascript/browser-all.js"></script>
+<!-- end (1) PrimaryResources -->
+<!-- beg (2) SecondaryResources -->
+<style type="text/css">.mw, a.mw:link, a.mw:visited {color:#000;font-family:Verdana,Arial,Helvetica;font-weight:bold;font-size:xx-small;text-decoration:none;} a.mw:hover	{color:#00f;font-family:Verdana,Arial,Helvetica;font-weight:bold;font-size:xx-small;text-decoration:none;}</style>
+<!-- end (2) SecondaryResources -->
+<!-- beg (3) StyleTags -->
+<link rel="stylesheet" href="/style/measuredhs.css" type="text/css" />
+<!-- end (3) StyleTags -->
+<!-- beg (4) JavaScript -->
+<script type="text/javascript">
+<!--
+var gMenuControlID = 0;
+var menus_included = 0;
+var jsSiteID = 1;
+var jsSubSiteID = 32;
+var js_gvPageID = 15840;
+var jsPageID = 15840;
+var jsPageSetID = 0;
+var jsPageType = 0; var jsSiteSecurityCreateControls = 0;
+var jsShowRejectForApprover = 1;
+// -->
+</script><script>
+var jsDlgLoader = '/data/dataset_admin/loader.cfm';
+var jsSiteResourceLoader = '/cs-resources.cfm?r=';
+var jsSiteResourceSettings = {canCombine: false, canMinify: false};
+</script>
+<!-- end (4) JavaScript -->
+<!-- beg (5) CustomHead -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="google-translate-customization" content="ded32504857ebde8-f78f919dcb739fc6-g50b91c183c59ec84-12" />
+<meta name="p:domain_verify" content="acf3a6de5d27a10b2f692e5664d4d9fe" />
+<link rel="stylesheet" href="/style/dhtmlwindow.css" type="text/css" />
+<link rel="stylesheet" href="/style/modal.css" type="text/css" />
+<script type="text/javascript" src="/js/dhtmlwindow.js"></script>
+<script type="text/javascript" src="/js/modal.js"></script>
+<script type="text/javascript" src="/js/smoothScroll.js"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "11dcec2d-b04a-4a5e-9faf-8856fe6c712d", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script src="//www.google.com/jsapi" type="text/javascript"></script>
+<script src="/assets/inc/checkAll.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/jquery.equal-height-columns.js" type="text/javascript"></script>
+<script src="/js/jquery.jstree.js" type="text/javascript"></script>
+<script type="text/javascript">
+var customSearchControl
+google.load('search', '1', {language : 'en', style: google.loader.themes.ESPRESSO});
+google.setOnLoadCallback(function(){
+customSearchControl = new google.search.CustomSearchControl('005607801107332323028:iun4gastykw');
+customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+var options = new google.search.DrawOptions();
+options.setSearchFormRoot('cse-search-form');
+customSearchControl.draw('cse', options);
+;
+},true);
+function searchTest(){
+// console.debug("testing search");
+}
+function checkSearchOptions(){
+$('#widgets-area').hide();
+var searchPhrase = document.searchForm.inputSearch.value;
+if (searchPhrase == 'Search' || searchPhrase == ''){
+alert('Please add a topic before searching.');
+}else{
+/*Add this if they decide they want the drop down
+if (document.searchForm.searchType.value == 'site'){
+customSearchControl.execute(searchPhrase);
+}else{
+alert('send');
+}*/
+customSearchControl.execute(searchPhrase);
+document.getElementById("cse").style.display = 'block';
+document.getElementById("cse").style.height = '100%';
+// document.getElementById("content").style.display = 'none';
+setTimeout(function(){
+smoothScroll(document.getElementById("cse"));
+}, 750);
+}
+}
+$(document).ready(function(){
+$("#cse").on( "click", "div.gsc-clear-button", function() {
+$("#cse").hide();
+$("#widgets-area").show();
+});
+});
+</script>
+<link href="/style/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.cycle.js" defer></script>
+<link href="/style/fonts.css" rel="stylesheet" type="text/css" />
+<!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if IE 8]>
+<style>
+.creditText {
+display:none !important;
+}
+</style>
+<![endif]-->
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-5275645-1', 'auto');
+//ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+<!-- end (5) CustomHead -->
+<!-- beg (6) TertiaryResources -->
+<!-- end (6) TertiaryResources -->
+<!-- beg (7) authormode_inlinestyles -->
+<link rel="stylesheet" type="text/css" href="/commonspot/commonspot.css">
+<!-- end (7) authormode_inlinestyles -->
+</head><body lang="en" class="CS_Document"><a name="__topdoc__"></a><script type="text/javascript">
+<!--
+// always-include-ie.js  Copyright 1998-2005 PaperThin, Inc. All rights reserved.
+bName = navigator.appName;
+bVer = parseInt(navigator.appVersion);
+var bCanRollover=0
+if (bName == "Netscape")
+{
+if(bVer >= 3)
+bCanRollover=1;
+}
+else if (bName == "Microsoft Internet Explorer")
+{
+if(bVer >= 4)
+bCanRollover=1;
+}
+function ImageSet(imgID,newTarget)
+{
+if (bCanRollover)
+document[imgID].src=newTarget;
+}
+function clearStatus()
+{
+window.status = "";
+}
+function setStatbar(statbar)
+{
+var strStatbar=unescape(statbar);
+window.status=strStatbar;
+}
+function onLoadComplete()
+{
+if( menus_included == 1 )
+document.onmouseover = document_mouseover;	// defined in menu_ie.js
+}
+function HandleLink(parentID,link,displaylink)
+{
+// links are in one of the following formats:
+// 		cpe_60_0,CP___PAGEID=100
+// 		CPNEWWIN:WindowName^params@CP___
+// 			CPNEWWIN:child^top=110:left=130:ww=140:hh=150:tb=1:loc=1:dir=0:stat=1:mb=1:sb=1:rs=1@CP___PAGEID=3811,Adv-Search-2,1
+// displaylink is the server relative URL or fully qualified URL
+windowname = "";
+windowparams = "";
+// "CPNEWWIN:" & NewWindowName & "^" & params & "@" & linkStruct.LinkURL;
+pos = link.indexOf("CPNEWWIN:");
+if (pos != -1)
+{
+pos1 = link.indexOf ("^");
+windowname = link.substring (pos+9, pos1);
+pos2 = link.indexOf ("@");
+windowparams = link.substring (pos1 + 1, pos2);
+link = link.substring (pos2 + 1, link.length);
+}
+if( displaylink && displaylink != "" )
+{
+if (windowname == "")
+window.location = displaylink;
+else
+{
+windowparams = FormatWindowParams(windowparams);
+window.open (displaylink, windowname, windowparams);
+}
+}
+else
+{
+targetLink = link;
+if (link.indexOf ("CP___") != -1)
+{
+httpPos = -1;
+commaPos = link.indexOf(",");
+if (commaPos != -1)
+{
+targetUrl = link.substr(commaPos + 1);
+if (targetUrl.indexOf("://") != -1 || targetUrl.indexOf("/") == 0)
+{
+httpPos = commaPos + 1;
+}
+}
+if (httpPos != -1)
+{
+targetLink = link.substr(httpPos);
+commaPos = targetLink.indexOf(",");
+if (commaPos != -1)
+targetLink = targetLink.substr(0, commaPos);
+}
+else
+targetLink = jsDlgLoader + "?csModule=utilities/handle-link&thelink=" + link;
+if (windowname == "")
+window.location = targetLink;
+else
+{
+windowparams = FormatWindowParams(windowparams);
+window.open (targetLink, windowname, windowparams);
+}
+}
+else
+{
+//commaPos = link.indexOf(",");
+//if (commaPos != -1)
+//	link = link.substr(0, commaPos);
+if (windowname == "")
+window.location = link;
+else
+{
+windowparams = FormatWindowParams(windowparams);
+window.open (link, windowname, windowparams);
+}
+}
+}
+}
+function doWindowOpen(href,name,params)
+{
+if (params != '')
+window.open (href, name, params);
+else
+window.open (href, name);
+}
+// 	CPNEWWIN:child^top=110:left=130:ww=140:hh=150:tb=1:loc=1:dir=0:stat=1:mb=1:sb=1:rs=1@CP___PAGEID=3811,Adv-Search-2,1
+function FormatWindowParams(windowparams)
+{
+if( windowparams.indexOf(":loc=") != -1 || windowparams.indexOf(":ww=") != -1 || windowparams.indexOf(":hh=") != -1 ||
+windowparams.indexOf(":left=") != -1 || windowparams.indexOf(":top=") != -1 )
+{
+windowparams = substringReplace(windowparams,':left=',',left=');
+windowparams = substringReplace(windowparams,'left=','left=');
+windowparams = substringReplace(windowparams,':ww=',',width=');
+windowparams = substringReplace(windowparams,'ww=','width=');
+windowparams = substringReplace(windowparams,':hh=',',height=');
+windowparams = substringReplace(windowparams,'hh=','height=');
+windowparams = substringReplace(windowparams,':loc=',',location=');
+windowparams = substringReplace(windowparams,'loc=','location=');
+windowparams = substringReplace(windowparams,':dir=',',directories=');
+windowparams = substringReplace(windowparams,'dir=','directories=');
+windowparams = substringReplace(windowparams,':tb=',',toolbar=');
+windowparams = substringReplace(windowparams,'tb=','toolbar=');
+windowparams = substringReplace(windowparams,':stat=',',status=');
+windowparams = substringReplace(windowparams,':mb=',',menubar=');
+windowparams = substringReplace(windowparams,':sb=',',scrollbars=');
+windowparams = substringReplace(windowparams,':rs=',',resizable=');
+}
+return windowparams;
+}
+// -->
+</script>
+<script type="text/javascript">var _kiq = _kiq || [];</script>
+<script type="text/javascript" src="//s3.amazonaws.com/ki.js/15140/2Pk.js" async="async"></script>
+<header id="head">
+<div class="wrap">
+<h1 id="logo"><a href="/">The DHS Program</a></h1>
+<div id="cs_control_1379" class="cs_control  CS_Element_LinkBar">
+<script type="text/javascript">
+$(document).ready(function() {
+$("#navigation td").hover(function() {
+$("> div > ul", this)
+.css("display", "none")
+.slideDown(100)
+.css("display", "block");
+}, function() {
+$("> div > ul", this).slideUp(100);
+});
+});
+function findPositionX(obj){
+var left = 0;
+if(obj.offsetParent){
+while(1){
+left += obj.offsetLeft;
+if(!obj.offsetParent)
+break;
+obj = obj.offsetParent;
+}
+}else if(obj.x){
+left += obj.x;
+}
+return left;
+}
+function hideMe(obj){
+document.getElementById(childMenu).style.display = 'none';
+}
+</script>
+<!-- /data/dataset_admin/ -->
+<nav id="primary-navigation">
+<ul>
+<li>
+<ul class="child-navigation">
+<li><a href="/Who-We-Are/DHS-Experts.cfm">DHS Experts</a></li>
+<li><a href="/Who-We-Are/News-Room/index.cfm">News Room</a></li>
+<li><a href="/Who-We-Are/Contact-Us.cfm">Contact Us</a></li>
+<li><a href="/Who-We-Are/Employment.cfm">Employment</a></li>
+<li><a href="/Who-We-Are/Directions-to-The-DHS-Program.cfm">Directions</a></li>
+</ul>
+<a href="/Who-We-Are/">Who We Are</a>
+</li>
+<li>
+<ul class="child-navigation">
+<li><a href="/What-We-Do/Survey-Types/index.cfm">Survey Types</a></li>
+<li><a href="/What-We-Do/Survey-Search.cfm">Survey Search</a></li>
+<li><a href="/What-We-Do/Methodology.cfm">Methodology</a></li>
+<li class="sub-item">
+<a href="/What-We-Do/Questionnaires.cfm">Questionnaires</a>
+</li>
+<li class="sub-item">
+<a href="/What-We-Do/GPS-Data-Collection.cfm">GPS Data Collection</a>
+</li>
+<li class="sub-item">
+<a href="/What-We-Do/Biomarkers.cfm">Biomarkers</a>
+</li>
+<li class="sub-item">
+<a href="/What-We-Do/Protecting-the-Privacy-of-DHS-Survey-Respondents.cfm">Privacy of Respondents</a>
+</li>
+<li><a href="/What-We-Do/GIS.cfm">GIS</a></li>
+<li><a href="/What-We-Do/Dissemination.cfm">Dissemination</a></li>
+<li><a href="/What-We-Do/Analysis.cfm">Analysis</a></li>
+<li><a href="/What-We-Do/Capacity-Strengthening.cfm">Capacity Strengthening</a></li>
+<li><a href="/faq.cfm">FAQs</a></li>
+</ul>
+<a href="/What-We-Do/index.cfm">What We Do</a>
+</li>
+<li>
+<ul class="child-navigation">
+<li><a href="/Where-We-Work/Country-List.cfm">Countries List</a></li>
+</ul>
+<a href="/Where-We-Work/">Where We Work</a>
+</li>
+<li class="current-menu-item">
+<ul class="child-navigation">
+<li><a href="/data/index.cfm#CP_JUMP_13446">Online Tools</a></li>
+<li><a href="http://www.statcompiler.com/">STATcompiler</a></li>
+<li><a href="/data/Mobile-App.cfm">Mobile App</a></li>
+<li><a href="http://userforum.dhsprogram.com">DHS User Forum</a></li>
+<li><a href="http://api.dhsprogram.com/">DHS API</a></li>
+<li><a href="https://www.idhsdata.org/">IPUMS-DHS</a></li>
+<li><a href="/data/Using-Datasets-for-Analysis.cfm">Using Datasets for Analysis</a></li>
+<li><a href="/publications/publication-dhsg1-dhs-questionnaires-and-manuals.cfm">Guide to DHS Statistics</a></li>
+<li><a href="/data/available-datasets.cfm">Download Datasets</a></li>
+</ul>
+<a href="/Data/">Data</a>
+</li>
+<li>
+<ul class="child-navigation">
+<li><a href="/publications/publication-search.cfm">Publications Search</a></li>
+<li><a href="/publications/Journal-Articles-by-Topic.cfm">Journal Articles</a></li>
+<li><a href="/publications/instructions.cfm">Ordering Publications</a></li>
+<li><a href="/faq.cfm">FAQs</a></li>
+</ul>
+<a href="/publications/index.cfm">Publications</a>
+</li>
+<li>
+<ul class="child-navigation" style="right: 0px;">
+<li><a href="/topics/gender/index.cfm">Gender</a></li>
+<li><a href="/topics/malaria/index.cfm">Malaria</a></li>
+<li><a href="/topics/sdgs/index.cfm">SDGs</a></li>
+<li><a href="/topics/More-Topics.cfm">More Topics</a></li>
+</ul>
+<a href="/Topics/">Topics</a>
+</li>
+</ul>
+</nav>
+</div>
+<a id="logo-usaid" href="http://usaid.gov">USAID</a>
+<ul id="quick-links">
+<li>
+<form name="searchForm" id="searchForm" action="javascript:checkSearchOptions()">
+<input type="input" value="Search" name="inputSearch" id="searchInput" onclick="this.value='';" placeholder="Search"/>
+<input type="button" value="Search" name="btn_click" id="searchSubmit" onClick="checkSearchOptions()"/>
+</form>
+</li>
+<li><a href="https://dhsprogram.com/data/dataset_admin">Login</a></li>
+<li style="height:22px"><span id="google_translate_element"></span></li>
+</ul>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true, gaTrack: true, gaId: 'UA-5275645-1'}, 'google_translate_element');
+$('.goog-te-menu-value > *').eq(2).remove();
+$('.goog-te-menu-value > *').eq(2).remove();
+$('.goog-te-menu-value > *').eq(2).remove();
+$('.goog-te-menu-value > *').eq(2).remove();
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+</header>
+<!-- SEARCH RESULTS -->
+<div class="wrap" stlye="margin-bottom: 15px !important;">
+<div id="cse" style="margin:0px;padding:0px; height:10px; display:none"></div>
+</div>
+<div id="widgets-area">
+<div id="news-columns" class="wrap oldStyle">
+<div id="breadCrumb">
+<p id="shareThis" class="floatRight" style="z-index:200">
+<span class='st_sharethis' displayText='ShareThis'></span>
+<span class='st_' displayText=''></span>
+</p>
+<div id="cs_control_1610" class="cs_control  CS_Element_LinkBar"><a href="/">The DHS Program</a>  &gt; <a href="/data/">Data</a>  &gt; <a href="/data/dataset_admin/">Dataset Account Home</a>  &gt; login_main</div></div><div><div id="cs_control_19166" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_widgetsheader"></div></div></div><div id="leftColumn"><div id="cs_control_1432" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_leftColumn"><div id="gridRow_1_1_1432" class="cs_GridRow"><div id="gridCol_1_1_1_1_1432" class="cs_GridColumn"><div id="cs_control_1650" class="cs_control  CS_Element_Image"><div style="text-align:default;"><img src="/data/images/data.jpg" border="0" class="CS_Image_IMG" title="" alt="Data" width="181" height="34" /></div></div><div id="cs_control_1651" class="cs_control  CS_Element_LinkBar">
+<style type="text/css">
+#leftColumn{
+line-height:15px;
+}
+/*		#leftColumn ul{
+margin:4px 0 0 12px;
+padding:0px
+}*/
+#leftColumn #thirdLevel {
+margin:0px;
+padding:0px;
+margin-left:8px
+}
+#leftColumn li{
+margin-bottom:4px;
+}
+</style>
+<ul>
+<li><span class="leftListHeader">ABOUT THE DATA</span></li>
+<ul>
+<li><a href="/data/Getting-Started.cfm" onClick="" class="leftListChild">Getting Started</a></li>
+<li><a href="/data/data-collection.cfm" onClick="" class="leftListChild">Data Collection</a></li>
+<li><a href="/data/Data-Processing.cfm" onClick="" class="leftListChild">Data Processing</a></li>
+</ul>
+</li>
+</ul>
+<ul style="border-top:1px dashed #666">
+<li><span class="leftListHeader">UNDERSTANDING SURVEY STATISTICS</span></li>
+<ul>
+<li><a href="/data/Data-Quality-and-Use.cfm" onClick="" class="leftListChild">Data Quality and Use</a></li>
+<li><a href="/data/Data-Tabulation-Plan.cfm" onClick="" class="leftListChild">Data Tabulation Plan</a></li>
+<li><a href="/data/Survey-Indicators.cfm" onClick="" class="leftListChild">Survey Indicators</a></li>
+<li><a href="/data/Data-Tools-and-Manuals.cfm" onClick="" class="leftListChild">Data Tools and Manuals</a></li>
+<li><a href="http://legacy.measuredhs.com/help/Datasets/index.htm" onClick="javascript:doWindowOpen('http://legacy.measuredhs.com/help/Datasets/index.htm','GuideToDHSStatistics','toolbar=1,location=1,directories=0,status=1,menubar=1,scrollbars=1,resizable=1');return false;" class="leftListChild">Online Guide to DHS Statistics</a></li>
+</ul>
+</li>
+</ul>
+<ul style="border-top:1px dashed #666">
+<li><span class="leftListHeader">WORKING WITH DATASETS</span></li>
+<ul>
+<li><a href="/data/Using-DataSets-for-Analysis.cfm" onClick="" class="leftListChild">Using Datasets for Analysis</a></li>
+<li><a href="/data/Model-Datasets.cfm" onClick="" class="leftListChild">Model Datasets</a></li>
+<li><a href="/data/Data-Variables-and-Definitions.cfm" onClick="" class="leftListChild">Data Variables & Definitions</a></li>
+<li><a href="/data/Dataset-Types.cfm" onClick="" class="leftListChild">Dataset Types</a></li>
+<li><a href="/data/File-Formats.cfm" onClick="" class="leftListChild">File Formats</a></li>
+<li><a href="/data/File-Types-and-Names.cfm" onClick="" class="leftListChild">File Types & Names</a></li>
+<li><a href="/data/Merging-Datasets.cfm" onClick="" class="leftListChild">Merging Datasets</a></li>
+<li><a href="/data/calculating-the-age-of-children.cfm" onClick="" class="leftListChild">Calculating the Age of Children</a></li>
+</ul>
+</li>
+</ul>
+<ul style="border-top:1px dashed #666">
+<li><span class="leftListHeader">DATASET ACCESS</span></li>
+<ul>
+<li><a href="/data/Access-Instructions.cfm" onClick="" class="leftListChild">Access Instructions</a></li>
+<li><a href="/data/available-datasets.cfm" onClick="" class="leftListChild">Available Datasets</a></li>
+</ul>
+</li>
+</ul>
+<ul style="border-top:1px dashed #666">
+<li><span class="leftListHeader">ONLINE TOOLS</span></li>
+<ul>
+<li><a href="http://statcompiler.com/" onClick="javascript:doWindowOpen('http://statcompiler.com/','NewWindow','top=10,left=10,width=500,height=400,toolbar=1,location=1,directories=0,status=1,menubar=1,scrollbars=1,resizable=1');return false;" class="leftListChild">STATcompiler</a></li>
+<li><a href="/data/Mobile-App.cfm" onClick="" class="leftListChild">Mobile App</a></li>
+<li><a href="http://userforum.dhsprogram.com/" onClick="" class="leftListChild">DHS User Forum</a></li>
+<li><a href="http://api.dhsprogram.com" onClick="" class="leftListChild">DHS API</a></li>
+<li><a href="https://www.idhsdata.org" onClick="javascript:doWindowOpen('https://www.idhsdata.org','_blank','');return false;" class="leftListChild">IPUMS DHS</a></li>
+<li><a href="http://hivdata.dhsprogram.com/" onClick="javascript:doWindowOpen('http://hivdata.dhsprogram.com/','_blank','');return false;" class="leftListChild">HIV/AIDS Survey Indicators Database</a></li>
+<li><a href="http://spatialdata.dhsprogram.com" onClick="javascript:doWindowOpen('http://spatialdata.dhsprogram.com','_blank','');return false;" class="leftListChild">Spatial Data Repository</a></li>
+<li><a href="http://www.malariasurveys.org/" onClick="javascript:doWindowOpen('http://www.malariasurveys.org/','_blank','');return false;" class="leftListChild">Malaria Indicator Surveys</a></li>
+</ul>
+</li>
+</ul>
+</div><div id="cs_control_4806" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Sched_15840_4806"><a name="SecondaryNavigationContainer" id="SecondaryNavigationContainer"></a><a name="CP_JUMP_4807" id="CP_JUMP_4807"></a><div id="cs_control_4807" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_SecondaryNavigationContainer"></div></div></div></div></div></div></div></div></div><div id="centerColumnExpanded"><div id="cs_control_1378" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_mainbody"><div id="gridRow_1_1_1378" class="cs_GridRow"><div id="gridCol_1_1_1_1_1378" class="cs_GridColumn"><div id="cs_control_8015" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_15840_8015"><div id="gridRow_1_1_8015" class="cs_GridRow"><div id="gridCol_1_1_1_1_8015" class="cs_GridColumn"><div id="cs_control_8016" class="cs_control  CS_Element_Image"><div style="text-align:default;"><img src="/data/images/LoginorRegisterforDatasets.jpg" border="0" class="CS_Image_IMG" title="" alt="LoginorRegisterforDatasets" width="809" height="35" /></div></div><div id="cs_control_8019" class="cs_control  CS_Element_CustomCF"><div id="CS_CCF_15840_8019">
+<table cellpadding="8px"><tr><td bgcolor="white" colspan="2" align="center">
+<strong style="font-size:13px;">Login and Download Instructions</strong></td></tr></table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td  width="100%" valign="top">
+<table width="100%" border="1" align="center" cellpadding="8" cellspacing="0" style="border: 1px solid #accd98;" bgcolor="whitesmoke">
+<tr>
+<td width="50%">
+<div align="center" style="font-size:13px;font-weight:bold;padding-bottom:8px">New Users Register</div>
+<div class="ltylw" style="margin:0 0 0 0;">
+<span style="font-size:11px;">Before you can download datasets, you must register as a DHS data user.
+Dataset access is only granted for legitimate research purposes.
+Learn more about data restrictions and <a href="/data/Access-Instructions.cfm" target="_blank" style="font-size:12px;">how to request access</a>
+or view a <a href="/data/available-datasets.cfm" target="_blank" style="font-size:12px;">list of available datasets</a>.
+<br /><br>
+<div align="center" style="font-size:14px; font-weight:bold; margin-bottom:10px"><a href="/data/new-user-registration.cfm" >
+<span style="font-size:13px; font-weight:bold">Register for Dataset Access</span></a></div>
+</td>
+</tr>
+</table>
+<br>
+<table width="100%" border="1" align="center" cellpadding="8" cellspacing="0" style="border: 1px solid #accd98;" bgcolor="whitesmoke">
+<tr>
+<td width="50%" align="center">
+<div align="center" style="font-size:13px;font-weight:bold;padding-bottom:8px">Model Datasets Available</div>
+If you would like to try out some data files we have provided some example model datasets for which you do not need to register.
+<div align="center" style="padding:5px"><strong><a href="/data/Model-Datasets.cfm">Click here to download model dataset files.</a></strong>
+</span>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<form action="login_main.cfm" METHOD="post">
+<input type="hidden" name="Submitted" value="1" />
+<input type="hidden" name="UserType" value="2" />
+<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="accd98" bgcolor="whitesmoke"><tr><td>
+<table border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="whitesmoke">
+<tr>
+<td colspan="3" class="surveybttm" align="center">
+<strong style="font-size:13px;padding-bottom:10px">Registered Users Please Login Here</strong>
+</td>
+</tr>
+<tr>
+<td align="right" width="40%">
+<label for="UserName"><strong>Email:</strong></label></td>
+<td colspan="2"><input class="tdtext" type="text" name="UserName" size="40" maxlength="60" id="UserName" value=""/></td>
+</tr>
+<tr>
+<td align="right">
+<label for="Password"><strong>Password:</strong></label></td>
+<td colspan="2">
+<input class="tdtext" type="password" name="UserPass" size="20" maxlength="30" id="Password" value=""/>
+<span style="font-size:7pt;font-weight:bold">NEW! (passwords are now case sensitive)</span></td>
+</tr>
+<tr>
+<td  colspan="3" align="center" class="topdotline">
+<input class="tdtext" name="submit" type="submit" value="Sign In" />
+<div style="height:5px"></div>
+</td>
+</tr>
+</table>
+</td></tr></table>
+</form>
+<br />
+<form action="login_main.cfm" METHOD="post">
+<input type="hidden" name="forgotpass" value="yes" />
+<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="accd98" bgcolor="whitesmoke"><tr><td>
+<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="whitesmoke">
+<tr><td colspan="2" align="center"><strong style="font-size:13px;">
+Forgot Password</strong></td></tr>
+<tr>
+<td align="center" class="alt">
+Enter the e-mail address you used when registering with us and we will e-mail instructions on creating a new password.
+<br /><br />
+<label for="label2"><strong>Email Address:</strong></label>
+<input  class="tdtext" type="text" name="Email" size="30" maxlength="50" id="label2" />
+<input class="tdtext" name="submit" type="submit" value="Submit" />
+<div style="height:8px"></div>
+</td>
+</tr>
+</table>
+</td></tr></table>
+</form>
+<br>
+<table>
+<tr>
+<td align="left">
+<div id="contactInfo">
+<strong>  For questions or comments about obtaining data, please contact:</strong>
+<blockquote>
+<div style="padding-left: 7px;">
+ E-mail: <a href="mailto:archive@dhsprogram.com">archive@dhsprogram.com</a></div>
+</blockquote>
+</div>
+</td>
+</tr>
+</table>
+</div></div></div></div></div></div></div></div></div></div></div><div><div id="cs_control_19167" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_widgetsfooter"></div></div>
+</div>
+</div>
+</div>
+<footer id="floor">
+<div id="social-media">
+<div class="row wrap" style="padding-top: 35px">
+<ul class="col_2_3rds">
+<li><a href="https://www.facebook.com/DHSprogram" target="fbook"><img src="https://dhsprogram.com/images/social/facebook.png" alt="" border="0" height="38"></a></li>
+<li><a href="https://twitter.com/DHSprogram" target="twit"><img src="https://dhsprogram.com/images/social/twitter.png" alt="" border="0" height="38"></a></li>
+<li><a href="http://www.youtube.com/dhsprogram" target="tube"><img src="https://dhsprogram.com/images/social/youtube.png" alt="" border="0" height="38"></a></li>
+<li><a href="http://www.linkedin.com/company/dhs-program" target="linked"><img src="https://dhsprogram.com/images/social/linkedin.png" alt="" border="0" height="38"></a></li>
+<li><a href="http://blog.dhsprogram.com/" target="blog"><img src="https://dhsprogram.com/images/social/blog.png" alt="" border="0" height="38"></a></li>
+</ul>
+<div class="col_1_3rd col_last">
+<form id="newsletter-form" action="/email-subscribe.cfm" name="emailSignUp">
+<span>
+<input type="text" name="Email" placeholder="SIGN UP FOR EMAIL ALERTS" />
+<input type="submit" name="emailSignUp_btn" value=""/>
+</span>
+</form>
+</div>
+</div>
+</div>
+<div id="sitemap">
+<div class="row wrap">
+<div class="col_1_4th">
+<div id="cs_control_19152" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_sitemaplinkcontainer1"><div id="gridRow_1_1_19152" class="cs_GridRow"><div id="gridCol_1_1_1_1_19152" class="cs_GridColumn"><div id="cs_control_19169" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_15840_19169"><div id="gridRow_1_1_19169" class="cs_GridRow"><div id="gridCol_1_1_1_1_19169" class="cs_GridColumn"><div id="cs_control_19170" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/Who-We-Are/About-Us.cfm"> WHO WE ARE </a></h5>
+<ul>
+<li><a href="/Who-We-Are/DHS-Experts.cfm"> DHS Experts </a></li>
+<li><a href="/Who-We-Are/News-Room/index.cfm"> News Room </a></li>
+<li><a href="/Who-We-Are/Contact-Us.cfm"> Contact Us </a></li>
+<li><a href="/Who-We-Are/Employment.cfm"> Employment </a></li>
+<li><a href="/Who-We-Are/Directions-to-The-DHS-Program.cfm"> Directions </a></li>
+</ul>
+</div><div id="cs_control_19171" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/Where-We-Work/index.cfm"> WHERE WE WORK </a></h5>
+<ul>
+<li><a href="/Where-We-Work/Country-List.cfm"> Countries List </a></li>
+</ul>
+</div></div></div></div></div></div></div></div></div>
+</div>
+<div class="col_1_4th">
+<div id="cs_control_19153" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_sitemaplinkcontainer2"><div id="gridRow_1_1_19153" class="cs_GridRow"><div id="gridCol_1_1_1_1_19153" class="cs_GridColumn"><div id="cs_control_19172" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_15840_19172"><div id="gridRow_1_1_19172" class="cs_GridRow"><div id="gridCol_1_1_1_1_19172" class="cs_GridColumn"><div id="cs_control_19173" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/What-We-Do/index.cfm"> WHAT WE DO </a></h5>
+<ul>
+<li><a href="/What-We-Do/Survey-Types/DHS.cfm"> Survey Types </a></li>
+<li><a href="/What-We-Do/Survey-Types/DHS.cfm"> DHS </a></li>
+<li><a href="/What-We-Do/Survey-Types/AIS.cfm"> AIS </a></li>
+<li><a href="/What-We-Do/Survey-Types/SPA.cfm"> SPA </a></li>
+<li><a href="/What-We-Do/Survey-Types/MIS.cfm"> MIS </a></li>
+<li><a href="/What-We-Do/Survey-Search.cfm"> Survey Search </a></li>
+<li><a href="/What-We-Do/Methodology.cfm"> Methodology </a></li>
+<li><a href="/What-We-Do/Questionnaires.cfm"> Questionnaires </a></li>
+<li><a href="/What-We-Do/GPS-Data-Collection.cfm"> GPS Data Collection </a></li>
+<li><a href="/What-We-Do/Biomarkers.cfm"> Biomarkers </a></li>
+<li><a href="/What-We-Do/Protecting-the-Privacy-of-DHS-Survey-Respondents.cfm"> Privacy of Respondents </a></li>
+<li><a href="/What-We-Do/GIS.cfm"> GIS </a></li>
+<li><a href="/What-We-Do/Dissemination.cfm"> Dissemination </a></li>
+<li><a href="/What-We-Do/Analysis.cfm"> Analysis </a></li>
+<li><a href="/What-We-Do/Capacity-Strengthening.cfm"> Capacity Strengthening </a></li>
+</ul>
+</div></div></div></div></div></div></div></div></div>
+</div>
+<div class="col_1_4th">
+<div id="cs_control_19154" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_sitemaplinkcontainer3"><div id="gridRow_1_1_19154" class="cs_GridRow"><div id="gridCol_1_1_1_1_19154" class="cs_GridColumn"><div id="cs_control_19174" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_15840_19174"><div id="gridRow_1_1_19174" class="cs_GridRow"><div id="gridCol_1_1_1_1_19174" class="cs_GridColumn"><div id="cs_control_19175" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/data/index.cfm"> DATA </a></h5>
+<ul>
+<li><a href="/data/index.cfm#CP_JUMP_13446"> Online Tools </a></li>
+<li><a href="http://www.statcompiler.com/"> STATcompiler </a></li>
+<li><a href="/data/Mobile-App.cfm"> Mobile App </a></li>
+<li><a href="http://userforum.dhsprogram.com"> DHS User Forum </a></li>
+<li><a href="http://api.dhsprogram.com/"> DHS API </a></li>
+<li><a href="https://www.idhsdata.org/"> IPUMS-DHS </a></li>
+<li><a href="/data/Using-DataSets-for-Analysis.cfm"> Using Datasets for Analysis </a></li>
+<li><a href="/publications/publication-dhsg1-dhs-questionnaires-and-manuals.cfm"> Guide to DHS Statistics </a></li>
+<li><a href="/data/available-datasets.cfm"> Download Datasets </a></li>
+<li><a href="/data/dataset_admin/login_main.cfm"> Dataset Login </a></li>
+</ul>
+</div><div id="cs_control_19176" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/publications/index.cfm"> PUBLICATIONS </a></h5>
+<ul>
+<li><a href="/publications/publication-search.cfm"> Publications Search </a></li>
+<li><a href="/publications/instructions.cfm"> Ordering Publications </a></li>
+<li><a href="/faq.cfm"> FAQs </a></li>
+</ul>
+</div></div></div></div></div></div></div></div></div>
+</div>
+<div class="col_1_4th col_last">
+<div id="cs_control_19155" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_sitemaplinkcontainer4"><div id="gridRow_1_1_19155" class="cs_GridRow"><div id="gridCol_1_1_1_1_19155" class="cs_GridColumn"><div id="cs_control_19177" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_15840_19177"><div id="gridRow_1_1_19177" class="cs_GridRow"><div id="gridCol_1_1_1_1_19177" class="cs_GridColumn"><div id="cs_control_19178" class="cs_control  CS_Element_LinkBar">
+<h5><a href="/topics/index.cfm"> TOPICS </a></h5>
+<ul>
+<li><a href="/topics/gender/index.cfm"> Gender </a></li>
+<li><a href="/topics/malaria/index.cfm"> Malaria </a></li>
+<li><a href="/topics/sdgs/index.cfm"> SDGs </a></li>
+<li><a href="/topics/More-Topics.cfm"> More Topics </a></li>
+<li><a href="/topics/Alcohol-and-Tobacco.cfm"> Alcohol and Tobacco </a></li>
+<li><a href="/topics/Anemia.cfm"> Anemia </a></li>
+<li><a href="/topics/Child-Health.cfm"> Child Health </a></li>
+<li><a href="/topics/Education.cfm"> Education </a></li>
+<li><a href="/topics/Family-Planning.cfm"> Family Planning </a></li>
+<li><a href="/topics/Fertility-and-Fertility-Preferences.cfm"> Fertility </a></li>
+<li><a href="/topics/Household-and-Respondent-Characteristics.cfm"> Household Characteristics </a></li>
+<li><a href="/topics/HIV-Corner/index.cfm"> HIV </a></li>
+<li><a href="/topics/Infant-and-Child-Mortality.cfm"> Infant and Child Mortality </a></li>
+<li><a href="/topics/Maternal-Health.cfm"> Maternal Health </a></li>
+<li><a href="/topics/Nutrition.cfm"> Nutrition </a></li>
+<li><a href="/topics/Unmet-Need.cfm"> Unmet Need </a></li>
+<li><a href="/topics/wealth-index/Index.cfm"> Wealth Index </a></li>
+<li><a href="/topics/Womens-Status-and-Empowerment.cfm"> Women's Status </a></li>
+<li><a href="/topics/Youth-Corner/index.cfm"> Youth </a></li>
+</ul>
+</div></div></div></div></div></div></div></div></div>
+</div>
+</div>
+</div>
+<div id="colophon">
+<div class="row wrap">
+<p class="col_3_8ths">
+ICF, 530 Gaither Road, Suite 500, Rockville, MD 20850<br />
+Tel: +1 301 407-6500 * Fax: +1 301 407-6501
+</p>
+<p class="col_5_8ths col_last">The information provided on this Web site is not official U.S. Government information and does not represent the views or positions of the U.S. Agency for International Development or the U.S. Government.</p>
+</div>
+</div>
+</footer>
+<!-- ClickTale Bottom part -->
+<div id="ClickTaleDiv" style="display: none;"></div>
+<script type="text/javascript">
+if(document.location.protocol!='https:')
+document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRb6.js'%20type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+if(typeof ClickTale=='function') ClickTale(9245,1,"www");
+</script>
+<!-- ClickTale end of Bottom part -->
+<!-- beg (1) PrimaryResources -->
+<script type="text/javascript" src="/commonspot/javascript/lightbox/overrides.js"></script><script type="text/javascript" src="/commonspot/javascript/lightbox/window_ref.js"></script><script type="text/javascript" src="/commonspot/pagemode/always-include-common.js"></script>
+<!-- end (1) PrimaryResources -->
+<!-- beg (2) SecondaryResources -->
+<!-- end (2) SecondaryResources -->
+<!-- beg (3) CustomFoot -->
+<!-- end (3) CustomFoot -->
+<!-- beg (4) TertiaryResources -->
+<!-- end (4) TertiaryResources --><div style="display:block; clear:left; padding:0px; font-family:Verdana,Arial; font-size:10px; color:gray;"></div>
+<script type="text/javascript">
+<!--
+var jsPageContributeMode = 'read';
+var jsPageSessionContributeMode = 'read';
+
+var jsPageAuthorMode = 0;
+var jsPageEditMode = 0;
+
+
+if(!commonspot)
+	var commonspot = {};
+commonspot.csPage = {};
+
+
+	commonspot.csPage.url = '/data/dataset_admin/login_main.cfm';
+
+
+commonspot.csPage.id = 15840;
+
+commonspot.csPage.siteRoot = '/';
+commonspot.csPage.subsiteRoot = '/data/dataset_admin/';
+
+
+// -->
+</script>
+<script type="text/javascript">
+<!--
+	if (typeof parent.commonspot == 'undefined' || typeof parent.commonspot.lview == 'undefined' || typeof parent.commonspot.lightbox == 'undefined')
+		loadNonDashboardFiles();
+	else if (parent.commonspot && typeof newWindow == 'undefined')
+	{
+		var arrFiles = 
+				[
+					{fileName: '/commonspot/javascript/lightbox/overrides.js', fileType: 'script', fileID: 'cs_overrides'},
+					{fileName: '/commonspot/javascript/lightbox/window_ref.js', fileType: 'script', fileID: 'cs_windowref'}
+				];
+		
+		loadDashboardFiles(arrFiles);
+	}
+//-->
+</script>
+</body></html>

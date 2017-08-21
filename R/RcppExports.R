@@ -13,7 +13,7 @@
 #' 
 #' @export
 McCOIL_categorical_cpp <- function(paramList) {
-    invisible(.Call('McCOILR_McCOIL_categorical_cpp', PACKAGE = 'McCOILR', paramList))
+    invisible(.Call('_McCOILR_McCOIL_categorical_cpp', PACKAGE = 'McCOILR', paramList))
 }
 
 #' @title
@@ -28,6 +28,6 @@ McCOIL_categorical_cpp <- function(paramList) {
 #' 
 #' @export
 McCOIL_proportional_cpp <- function(paramList) {
-    invisible(.Call('McCOILR_McCOIL_proportional_cpp', PACKAGE = 'McCOILR', paramList))
+    invisible(.Call('_McCOILR_McCOIL_proportional_cpp', PACKAGE = 'McCOILR', paramList))
 }
 

@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // McCOIL_categorical_cpp
 void McCOIL_categorical_cpp(Rcpp::List paramList);
-RcppExport SEXP McCOILR_McCOIL_categorical_cpp(SEXP paramListSEXP) {
+RcppExport SEXP _McCOILR_McCOIL_categorical_cpp(SEXP paramListSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::List >::type paramList(paramListSEXP);
@@ -18,7 +18,7 @@ END_RCPP
 }
 // McCOIL_proportional_cpp
 void McCOIL_proportional_cpp(Rcpp::List paramList);
-RcppExport SEXP McCOILR_McCOIL_proportional_cpp(SEXP paramListSEXP) {
+RcppExport SEXP _McCOILR_McCOIL_proportional_cpp(SEXP paramListSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::List >::type paramList(paramListSEXP);
@@ -28,8 +28,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"McCOILR_McCOIL_categorical_cpp", (DL_FUNC) &McCOILR_McCOIL_categorical_cpp, 1},
-    {"McCOILR_McCOIL_proportional_cpp", (DL_FUNC) &McCOILR_McCOIL_proportional_cpp, 1},
+    {"_McCOILR_McCOIL_categorical_cpp", (DL_FUNC) &_McCOILR_McCOIL_categorical_cpp, 1},
+    {"_McCOILR_McCOIL_proportional_cpp", (DL_FUNC) &_McCOILR_McCOIL_proportional_cpp, 1},
     {NULL, NULL, 0}
 };
 

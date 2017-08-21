@@ -18,7 +18,7 @@
 // [[Rcpp::export]]
 void McCOIL_categorical_cpp(Rcpp::List paramList) {
 
-////////can be changed///////
+////////can be changed/////////
 	double varP=0.1;  
 	double varE=0.0001;
 	double upper_bound_e1=0.2;
@@ -48,7 +48,7 @@ void McCOIL_categorical_cpp(Rcpp::List paramList) {
 	double ll[(n+1)][(k+1)];
 	double llcan[(n+1)][(k+1)];
 	double S2[(n+1)][(k+1)];
-	double q1=0.0, q2=0.0;
+	// double q1=0.0, q2=0.0;// unused parameters
 	double e1_can, e2_can;
 	int e1_accept=0, e2_accept=0;
 	for (i=1;i<=n;i++){

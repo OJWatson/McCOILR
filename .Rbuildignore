@@ -2,5 +2,6 @@
 ^\.Rproj\.user$
 ^.travis.yml$
 ^tutorials$
+tutorials
 ^inst/extdata/cat_output$
 ^inst/extdata/prop_output$

@@ -9,7 +9,9 @@ Description: Wrapper for THE REAL McCOIL in Rcpp, so that package can be more ea
 License: MIT
 LazyData: true
 Depends: R (>= 3.2.1)
-Imports: Rcpp (>= 0.12.7)
+Imports: 
+    Rcpp (>= 0.12.7),
+    magrittr
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.1
 SystemRequirements: C++11
