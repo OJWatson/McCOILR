@@ -107,11 +107,11 @@ McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=
 		sd_e2=  as.numeric(sd(outputMCMC1[(burnin+1): totalrun, (k+n+3)]))	
 	}
 	if ((err_method==1) | (err_method==2)) {
-			output_sum= data.frame(cbind(rep(output, (n+k)),	
+			output_sum= data.frame(cbind.data.frame(rep(output, (n+k)),	
 							c(rep("C", n), rep("P", k)), c(select_ind, select_pos), c(meanM, meanP), c(medianM, medianP), round(c(sdM, sdP),digits=5), c(M025, P025), c(M975, P975)))
 	}
 	else {
-			output_sum= data.frame(cbind(rep(output, (n+k+2)),	
+			output_sum= data.frame(cbind.data.frame(rep(output, (n+k+2)),	
 							c(rep("C", n), rep("P", k), "e1", "e2"), c(select_ind, select_pos, "e1","e2"), c(meanM, meanP, mean_e1, mean_e2), 
 							c(medianM, medianP, median_e1, median_e2), round(c(sdM, sdP, sd_e1, sd_e2),digits=5), c(M025, P025, e1_025, e2_025), c(M975, P975, e1_975, e2_975)))
 	}

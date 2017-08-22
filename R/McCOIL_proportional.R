@@ -75,13 +75,13 @@ McCOIL_proportional = function(dataA1, dataA2, maxCOI = 25, totalrun = 10000, bu
         sd_e3 = as.numeric(sd(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)]))
     }
     if ((err_method == 1) | (err_method == 2)) {
-        output_sum = data.frame(cbind(rep(output, (n + k)), c(rep("C", n), rep("P", k)),
+        output_sum = data.frame(cbind.data.frame(rep(output, (n + k)), c(rep("C", n), rep("P", k)),
                                       c(rownames(dataA1),colnames(dataA1)), 
                                       c(meanM, meanP), c(medianM, medianP),
                                       round(c(sdM, sdP), digits = 5), 
                                       c(M025, P025), c(M975, P975)))
     } else {
-        output_sum = data.frame(cbind(rep(output, (n + k + 1)), c(rep("C", n), rep("P", k),"epsilon"),
+        output_sum = data.frame(cbind.data.frame(rep(output, (n + k + 1)), c(rep("C", n), rep("P", k),"epsilon"),
                                       c(rownames(dataA1), colnames(dataA1), "epsilon"), c(meanM, meanP, mean_e3), 
                                       c(medianM, medianP, median_e3), round(c(sdM, sdP, sd_e3), digits = 5), 
                                       c(M025, P025, e3_025), c(M975, P975, e3_975)))
