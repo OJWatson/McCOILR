@@ -5,3 +5,5 @@
 tutorials
 ^inst/extdata/cat_output$
 ^inst/extdata/prop_output$
+^inst/extdata/Pf3k_SNP_data$
+^scripts$

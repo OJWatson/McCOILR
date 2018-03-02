@@ -43,4 +43,3 @@ return summary of output as data.frame
 \description{
 This function triggers the c code for the categorical method
 }
-

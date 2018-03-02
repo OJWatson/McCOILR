@@ -10,7 +10,7 @@ OJ Watson
 
 
 
-## 1. Data from Citygrapher 1 
+## 1. Description of aims of package
 
 *McCOILR* is simply an Rcpp implementation of [THEREALMcCOIL] (https://github.com/Greenhouse-Lab/THEREALMcCOIL),
 which was written solely to make running the software easier within the cluster

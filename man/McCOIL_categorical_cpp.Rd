@@ -15,4 +15,3 @@ Categorical cpp code
 \details{
 \code{McCOIL_categorical_cpp} implements THE REAL McCOIL categorical method
 }
-
