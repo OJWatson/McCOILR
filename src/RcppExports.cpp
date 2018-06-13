@@ -25,10 +25,22 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// McCOIL_proportional_Rcpp
+Rcpp::List McCOIL_proportional_Rcpp(Rcpp::List paramList);
+RcppExport SEXP _McCOILR_McCOIL_proportional_Rcpp(SEXP paramListSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type paramList(paramListSEXP);
+    rcpp_result_gen = Rcpp::wrap(McCOIL_proportional_Rcpp(paramList));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_McCOILR_McCOIL_categorical_cpp", (DL_FUNC) &_McCOILR_McCOIL_categorical_cpp, 1},
     {"_McCOILR_McCOIL_proportional_cpp", (DL_FUNC) &_McCOILR_McCOIL_proportional_cpp, 1},
+    {"_McCOILR_McCOIL_proportional_Rcpp", (DL_FUNC) &_McCOILR_McCOIL_proportional_Rcpp, 1},
     {NULL, NULL, 0}
 };
 

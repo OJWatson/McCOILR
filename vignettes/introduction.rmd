@@ -1,0 +1,312 @@
+---
+title: "The REAL McCOIL Rcpp package"
+author: "OJ Watson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+%\VignetteIndexEntry{How to use rdhs?}
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteEncoding{UTF-8}
+
+---
+
+## Overview
+
+1. Description of aims of package
+2. Testing Rcpp package
+3. Reducing SNP sites in Uganda study
+
+
+
+## 1. Description of aims of package
+
+*McCOILR* is simply an Rcpp implementation of [THEREALMcCOIL] (https://github.com/Greenhouse-Lab/THEREALMcCOIL),
+which was written solely to make running the software easier within the cluster
+framework I use. All rights refer to the writers of the original c code.
+
+The package can be installed as follows, assuming devtools has been installed. 
+
+```{r Load package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## first let's install the package
+devtools::install_github("OJWatson/McCOILR")
+
+## Load the package
+library(McCOILR)
+
+```
+
+## 2. Testing Rcpp package
+
+The package carries out the same 2 R functions as before, which are demonstrated below: 
+
+```{r Test Package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## categorical test
+
+# read in demo data and view it
+data0 = read.table(system.file("extdata","cat_input_test.txt",package="McCOILR"), head=T)
+data=data0[,-1]
+rownames(data)=data0[,1]
+
+# view the heterozygosity calls
+head(data)
+
+# create results directory and run analysis
+dir.create(path = "cat_output")
+out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20,
+totalrun=1000, burnin=100, M0=15, e1=0.05, e2=0.05,
+err_method=3, path="cat_output", output="output_test.txt" )
+
+
+## proportional test
+
+# read in demo data and view it
+dataA1i = read.table(system.file("extdata","prop_dataA1_test.txt",package="McCOILR"), head=T)
+dataA2i = read.table(system.file("extdata","prop_dataA2_test.txt",package="McCOILR"), head=T)
+dataA1= dataA1i[,-1]
+dataA2= dataA2i[,-1]
+rownames(dataA1)= dataA1i[,1]
+rownames(dataA2)= dataA2i[,1]
+
+# view the read counts
+head(dataA1)
+
+# create results directory and run analysis
+dir.create(path="prop_output")
+out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100,
+M0=15, epsilon=0.02, err_method=3, path="prop_output",
+output="output_test.txt" )
+
+
+```
+
+The R functions now return the summary outputs, just for ease of looking at the 
+results:
+
+```{r View output, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## view summary data.frame for categorical
+str(out_cat)
+
+## Have a look at the categorical output COI distribution
+hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),
+main = "Categorical Mean COI", xlab="COI")
+
+
+## view summary data.frame for proportional
+str(out_prop)
+
+## Have a look at the proportional output COI distribution
+hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),
+main = "Proportional Mean COI", xlab="COI")
+
+```
+
+## 3. Reducing SNP sites in Uganda study
+
+The main reason the package was created was so that the software could be easily
+run on my cluster framework in my department. This was because I wanted to see
+what effect reducing the number of SNP locations would have in terms of 
+increasing or decreasing the estimated COI. 
+
+```{r Cluster Work, include=TRUE, message = FALSE, warning = FALSE,  eval=F, echo=T}
+
+# Read in Uganda dataset
+snps <- read.csv(system.file("extdata","SNP.txt",package="McCOILR"),sep="\t")
+
+# let's just look at Kihihi
+kihihi_data <-  snps[snps$location=="Kihihi",]
+
+# create 100 sets of 24, 48 and 96 SNP site samples
+barcode24 <- replicate(sample(3:105,size = 24,replace = FALSE),n = 100)
+barcode48 <- replicate(sample(3:105,size = 48,replace = FALSE),n = 100)
+barcode96 <- replicate(sample(3:105,size = 96,replace = FALSE),n = 100)
+
+## The following is code to run the categorical analysis on our cluster but is 
+## just looping through the above barcode sets and running the categorical analysis
+## on each one
+
+## --------------------------------------------------------------------------##
+
+workdir <- "M:/OJ/McCOILR_Results"
+didehpc::didehpc_config_global(workdir=workdir,
+credentials="C:\\Users\\Oliver\\.smbcredentials",
+temp=didehpc::path_mapping("tmp",
+"T:",
+"//fi--didef3.dide.ic.ac.uk/tmp",
+"T:"),
+home=didehpc::path_mapping("OJ",
+"M:",
+"//fi--didef3.dide.ic.ac.uk/Malaria",
+"M:"))
+didehpc::web_login()
+root <- file.path(workdir, "contexts")
+packages.vector <- c("Rcpp","McCOILR")
+context::context_log_start()
+
+## set up context
+ctx <- context::context_save(root,
+packages = packages.vector,
+package_sources = provisionr::package_sources(
+github=c("OJWatson/McCOILR")
+)
+)
+
+config <- didehpc::didehpc_config(use_workers = TRUE)
+obj <- didehpc::queue_didehpc(ctx, config = config)
+
+paramList <- list()
+length(paramList) <- 300
+
+for(i in 1:300){
+
+if(i <=100){
+data <- kihihi_data[,barcode24[,i]+2]
+output <- paste0("Kihihi_24BarcodeTest_50maxCOI/24_",i,".txt")
+} else if (i > 100 & i <= 200) {
+data <- kihihi_data[,barcode48[,i-100]+2]
+output <- paste0("Kihihi_48BarcodeTest_50maxCOI/48_",i-100,".txt")
+} else {
+data <- kihihi_data[,barcode96[,i-200]+2]
+output <- paste0("Kihihi_96BarcodeTest_50maxCOI/96_",i-200,".txt")
+}
+
+
+paramList[[i]] <- (list(data = data, maxCOI=50, threshold_ind=20, 
+threshold_site=20, totalrun=100000, burnin=100,
+M0=15, e1=0.05, e2=0.05, err_method=3, 
+path="M:/OJ/McCOILR_Results",
+output=output))
+
+}
+
+dir.create(paste0(workdir,"/Kihihi_24BarcodeTest_50maxCOI"))
+dir.create(paste0(workdir,"/Kihihi_48BarcodeTest_50maxCOI"))
+dir.create(paste0(workdir,"/Kihihi_96BarcodeTest_50maxCOI"))
+
+workers <- obj$submit_workers(50)
+grp <- queuer::qlapply(X = paramList[1:100],obj = obj, timeout=0, 
+FUN = function(x){
+return(McCOIL_categorical(data = x$data,
+maxCOI = x$maxCOI, 
+threshold_ind = x$threshold_ind,
+threshold_site = x$threshold_site, 
+totalrun = x$totalrun, 
+burnin = x$burnin, M0 = x$M0, 
+e1 = x$e1, e2 = x$e2,
+err_method = x$err_method, 
+path = x$path, output = x$output))
+},
+name = "24_barcode")
+
+## --------------------------------------------------------------------------##
+
+```
+
+The code above is executing the categorical method on 100 different randomly chosen
+sets of SNP sites, with sets equal to 24, 48, 96, with 100,000 MCMC iterations 
+and a maximum possible COI of 50.
+
+The summary results of these MCMC iterations has been copied into the tutorials folder, 
+so the following analysis can be verified. Below I'm simply showing the overall 
+distribution for mean COI for the sets of 24, 48 and 96 SNP sites. 
+
+```{r Plot pseudo-steiner-again, include=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+
+# storage for the 24, 48 and 96 site datasets
+twenty4 <- list()
+fourty8 <- list()
+ninety6 <- list()
+
+for(i in 1:100){
+
+twenty4[[i]] <- read.csv(paste0("Kihihi_24_BarcodeTest_50maxCOI/24_",i,
+".txt_summary.txt"),sep="\t")
+fourty8[[i]] <- read.csv(paste0("Kihihi_48_BarcodeTest_50maxCOI/48_",i,
+".txt_summary.txt"),sep="\t")
+ninety6[[i]] <- read.csv(paste0("Kihihi_96_BarcodeTest_50maxCOI/96_",i,
+".txt_summary.txt"),sep="\t")
+
+}
+
+## Grab the estimated mean COI and lets plot these
+mean24 <- lapply(twenty4,function(x){return(as.numeric(as.character(x$mean[x$CorP=="C"])))})
+mean48 <- lapply(fourty8,function(x){return(as.numeric(as.character(x$mean[x$CorP=="C"])))})
+mean96 <- lapply(ninety6,function(x){return(as.numeric(as.character(x$mean[x$CorP=="C"])))})
+
+par(mfrow=c(1,3))
+hist(as.numeric(unlist(mean24)),main="24 Sites",xlab="COI")
+hist(as.numeric(unlist(mean48)),main="48 Sites",xlab="COI")
+hist(as.numeric(unlist(mean96)),main="96 Sites",xlab="COI")
+
+
+```
+
+Initially it seemed to me that the fewer SNP sites was causing a larger COI to be
+estimates. However, upon further inspection of the chains it could be seen that 
+using fewer SNP sites resulted in MCMC chains failing to converge more often, which
+gave spurious results.
+
+```{r Plot example chains, include=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+
+## First let's grab one MCMC output with 24 sites
+MCMC_24 <- read.table("M:/OJ/McCOILR_Results/Kihihi_24BarcodeTest_50maxCOI/24_99.txt",head=F)
+
+## First let's grab one MCMC output with 96 sites
+MCMC_96 <- read.table("M:/OJ/McCOILR_Results/Kihihi_96BarcodeTest_50maxCOI/96_99.txt",head=F)
+
+## We'll save these in the tutorials folder too for reproducibility
+save(list=c("MCMC_24","MCMC_96"),file = "MCMC24&96.RData")
+
+## Now let's plot some random COI estimate chains
+
+# for MCMC24 we will plot 9 random COI and allele frequency chains with some thinning
+par(mfrow=c(3,3))
+for(i in floor(seq(2,length(MCMC_24)-2,length.out = 9))){
+plot(MCMC_24[[i]][seq(1,100000,50)],type="l",
+ylab = "COI", main = twenty4[[99]]$name[i-1])
+}
+
+# and the same for MCMC96
+par(mfrow=c(3,3))
+for(i in floor(seq(2,length(MCMC_96)-2,length.out = 9))){
+plot(MCMC_96[[i]][seq(1,100000,50)],type="l",
+ylab = ifelse(length(grep(pattern = "assay",
+as.character(ninety6[[99]]$name[i-1]))==1),
+"Freq","COI"),
+main = ninety6[[99]]$name[i-1])
+}
+
+
+```
+
+We can also see that when we use the 96 SNP sites, the overall mean COI is equal to
+2.60, with a median equal to 2 which agrees very well with the analysis presented of 
+the categorical method for Kihihi within the supplementary material for THE REAL
+McCOIL, whereas for 24 sites these do not agree:
+
+```{r Mean COI, include=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+
+## Mean for 24
+print( paste0("Mean for 24 = ", mean(as.numeric(unlist(mean24)))))
+
+## Median for 24
+print( paste0("Median for 24 = ", median(as.numeric(unlist(mean24)))))
+
+## Mean for 96
+print( paste0("Mean for 96 = ", mean(as.numeric(unlist(mean96)))))
+
+## Median for 96
+print( paste0("Median for 24 = ", median(as.numeric(unlist(mean96)))))
+```
+
+As such it makes sense in the future when using THE REAL McCOIL on new datasets
+to use more sites within computational reason that display both polymorphic and 
+intermediate/high allele frequencies in multiple populations, such as the 128 SNPs 
+used within the publication attached to THE REAL McCOIL. 
+
+In addition I will be adding functionality to McCOILR to pipeline chain convergence
+assessment, such that when x number of repetitions on the same dataset do not yield 
+convergent results using Gelman and Rubin convergence diagnostics additional repetitions
+are automated until a convergent result is achieved. 
