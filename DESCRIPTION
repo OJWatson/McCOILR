@@ -1,8 +1,8 @@
 Package: McCOILR
 Type: Package
 Title: Rcpp implementation of THE REAL McCOIL
-Version: 1.0
-Date: 2017-06-20
+Version: 1.1
+Date: 2018-09-02
 Author: OJ Watson
 Maintainer: OJ Watson <o.watson15@imperial.ac.uk>
 Description: Wrapper for THE REAL McCOIL in Rcpp, so that package can be more easily run on distributed computing services and cluster infrastructure. 
@@ -11,9 +11,7 @@ LazyData: true
 Depends: R (>= 3.2.1)
 Imports:
     Rcpp (>= 0.12.7),
-    magrittr,
-    RCurl
-biocViews: VariantAnnotation, GenomicRanges, IRanges
+    magrittr
 LinkingTo: Rcpp
 RoxygenNote: 6.0.1
 SystemRequirements: C++11
