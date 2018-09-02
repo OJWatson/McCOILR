@@ -7,3 +7,5 @@ tutorials
 ^inst/extdata/prop_output$
 ^inst/extdata/Pf3k_SNP_data$
 ^scripts$
+^src/proportional_2018.cpp$
+$R/McCOIL_proportional_2018.R$

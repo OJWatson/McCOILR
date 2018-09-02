@@ -31,22 +31,3 @@ McCOIL_proportional_cpp <- function(paramList) {
     invisible(.Call('_McCOILR_McCOIL_proportional_cpp', PACKAGE = 'McCOILR', paramList))
 }
 
-#' @title
-#' McCOIL_proportional_Rcpp
-#' @description
-#' Proportional cpp code that thins outputs, and stores outputs rather than 
-#' writing to file. 
-#' 
-#' @param paramList A list of parameters created with equivalent R function
-#' 
-#' @details
-#' \code{McCOIL_proportional_Rcpp} implements THE REAL McCOIL proportional
-#'   method
-#' 
-#' @return Rcpp List
-#' 
-#' @export
-McCOIL_proportional_Rcpp <- function(paramList) {
-    .Call('_McCOILR_McCOIL_proportional_Rcpp', PACKAGE = 'McCOILR', paramList)
-}
-
