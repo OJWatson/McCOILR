@@ -31,8 +31,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     int i=0, j=0, prime=0, x=0, y=0;
     double sumori=0, sumcan=0; 
     
-    std::cout << "1" << std::endl;
-    
     ////read in parameter values////
     int max_moi= Rcpp::as<int>(paramList["max"]);	
     int iter = Rcpp::as<int>(paramList["iter"]);
@@ -48,8 +46,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     std::string file_index = Rcpp::as<std::string>(paramList["file_index"]);
     std::string path = Rcpp::as<std::string>(paramList["path"]);	
     int err_method = Rcpp::as<int>(paramList["err_method0"]); //1: use pre-specified e1 and e2; 2: use likelihood-free sampling for e1 and e2; 3: update e1 and e2 according to likelihood (for 2 and 3, pre-specified e1 and e2 were used as initial values) 
-    
-    std::cout << "2" << std::endl;
     
     ////read in the values////
     int M[(n+1)], Mcan[(n+1)], Maccept[(n+1)];
@@ -76,9 +72,7 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
 
     int c_accept=0;
     double c_can;
-    double q1=0.0, q2=0.0; // unused variables to be commented out TODO: Comment all unuseds
-    
-    std::cout << "3" << std::endl;
+        double q1=0.0, q2=0.0; // unused variables to be commented out TODO: Comment all unuseds
     
     for (i=1;i<=n;i++){
         M[i]= M0[i-1];
@@ -98,8 +92,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
         }
     }
     
-    std::cout << "4" << std::endl;
-    
     
     for (i=2;i<=25; i++){
         for (j=1; j<=50;j++){
@@ -116,8 +108,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     std::time_t t1, t2;
     t1 = time(NULL); // time 1
     
-    std::cout << "5" << std::endl;
-    
     
     ////output////
     char var_file[1000];
@@ -126,8 +116,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     
     ////MCMC////
     
-    std::cout << "6" << std::endl;
-    
     //calculate likelihood of initial values
     for (i=1;i<=n;i++){
         for (j=1;j<=k;j++){
@@ -135,8 +123,6 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
             llcan[i][j]= ll[i][j];
         }
     }
-    
-    std::cout << "7" << std::endl;
     
     for (i=1;i<=iter;i++){
         if (i%(iter/10)==0) Rprintf("Iter %d out of %d\n", i, iter);
