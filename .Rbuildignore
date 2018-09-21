@@ -8,6 +8,7 @@ tutorials
 ^inst/extdata/Pf3k_SNP_data$
 ^scripts$
 ^src/proportional_2018.cpp$
-$R/McCOIL_proportional_2018.R$
+^R/McCOIL_proportional_2018\.R$
 ^.*\.RData$
 ^vignettes/.*output$
+^.*\.rds$
