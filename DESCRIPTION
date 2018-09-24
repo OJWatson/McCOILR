@@ -1,18 +1,22 @@
 Package: McCOILR
 Type: Package
 Title: Rcpp implementation of THE REAL McCOIL
-Version: 1.0
-Date: 2017-06-20
+Version: 1.2
+Date: 2018-09-02
 Author: OJ Watson
 Maintainer: OJ Watson <o.watson15@imperial.ac.uk>
-Description: Wrapper for THE REAL McCOIL in Rcpp, so that package can be more easily run on distributed computing services and cluster infrastructure. 
-License: MIT
+Description: Wrapper for THE REAL McCOIL in Rcpp. Becuase R is easieR.
+License: MIT + file LICENSE
 LazyData: true
 Depends: R (>= 3.2.1)
-Imports: 
+Imports:
     Rcpp (>= 0.12.7),
     magrittr
-LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 5.0.1
+Suggests:
+    knitr,
+    devtools,
+    rmarkdown
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
 SystemRequirements: C++11
-

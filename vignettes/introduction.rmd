@@ -1,0 +1,104 @@
+---
+title: "The REAL McCOIL Rcpp package"
+author: "OJ Watson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to use rdhs?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
+---
+
+## Overview
+
+1. Description of aims of package
+2. Testing Rcpp package
+3. Reducing SNP sites in Uganda study
+
+
+
+## 1. Description of aims of package
+
+*McCOILR* is simply an Rcpp implementation of [THEREALMcCOIL] (https://github.com/Greenhouse-Lab/THEREALMcCOIL),
+which was written solely to make running the software easier within the cluster
+framework I use. All rights refer to the writers of the original c code.
+
+The package can be installed as follows, assuming devtools has been installed. 
+
+```{r Load package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## first let's install the package
+devtools::install_github("OJWatson/McCOILR")
+
+## Load the package
+library(McCOILR)
+
+```
+
+## 2. Testing Rcpp package
+
+The package carries out the same 2 R functions as before, which are demonstrated below: 
+
+```{r Test Package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## categorical test
+
+# read in demo data and view it
+data0 = read.table(system.file("extdata","cat_input_test.txt",package="McCOILR"), head=T)
+data=data0[,-1]
+rownames(data)=data0[,1]
+
+# view the heterozygosity calls
+head(data)
+
+# create results directory and run analysis
+dir.create(path = "cat_output")
+out_cat <- McCOIL_categorical(data,maxCOI=25, threshold_ind=20, threshold_site=20,
+totalrun=1000, burnin=100, M0=15, e1=0.05, e2=0.05,
+err_method=3, path="cat_output", output="output_test.txt" )
+
+
+## proportional test
+
+# read in demo data and view it
+dataA1i = read.table(system.file("extdata","prop_dataA1_test.txt",package="McCOILR"), head=T)
+dataA2i = read.table(system.file("extdata","prop_dataA2_test.txt",package="McCOILR"), head=T)
+dataA1= dataA1i[,-1]
+dataA2= dataA2i[,-1]
+rownames(dataA1)= dataA1i[,1]
+rownames(dataA2)= dataA2i[,1]
+
+# view the read counts
+head(dataA1)
+
+# create results directory and run analysis
+dir.create(path="prop_output")
+out_prop <- McCOIL_proportional(dataA1, dataA2, maxCOI=25, totalrun=5000, burnin=100,
+M0=15, epsilon=0.02, err_method=3, path="prop_output",
+output="output_test.txt" )
+
+
+```
+
+The R functions now return the summary outputs, just for ease of looking at the 
+results:
+
+```{r View output, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+
+## view summary data.frame for categorical
+str(out_cat)
+
+## Have a look at the categorical output COI distribution
+hist(as.numeric(as.character(out_cat$mean[out_cat$CorP=="C"])),
+main = "Categorical Mean COI", xlab="COI")
+
+
+## view summary data.frame for proportional
+str(out_prop)
+
+## Have a look at the proportional output COI distribution
+hist(as.numeric(as.character(out_prop$mean[out_cat$CorP=="C"])),
+main = "Proportional Mean COI", xlab="COI")
+
+```

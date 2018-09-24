@@ -15,4 +15,3 @@ Proportional cpp code
 \details{
 \code{McCOIL_proportional_cpp} implements THE REAL McCOIL proportional method
 }
-

@@ -1,8 +1,6 @@
 
 #include "llfunction_cat.h"
 
-#include <Rcpp.h>
-#include <string>
 
 //' @title
 //' McCOIL_categorical_cpp
@@ -45,9 +43,13 @@ void McCOIL_categorical_cpp(Rcpp::List paramList) {
 	int M[(n+1)], Mcan[(n+1)], Maccept[(n+1)];
 	double P[(k+1)], Pcan[(k+1)]; 
 	int Paccept[(k+1)];
-	double ll[(n+1)][(k+1)];
-	double llcan[(n+1)][(k+1)];
-	double S2[(n+1)][(k+1)];
+	
+	//double ll[(n+1)][(k+1)];
+	std::vector<std::vector<double> > ll(n+1, std::vector<double>(k+1));
+	//double llcan[(n+1)][(k+1)];
+	std::vector<std::vector<double> > llcan(n+1, std::vector<double>(k+1));
+	//double S2[(n+1)][(k+1)];
+	std::vector<std::vector<double> > S2(n+1, std::vector<double>(k+1));
 	// double q1=0.0, q2=0.0;// unused parameters
 	double e1_can, e2_can;
 	int e1_accept=0, e2_accept=0;
@@ -153,7 +155,7 @@ void McCOIL_categorical_cpp(Rcpp::List paramList) {
 		}
 		if (err_method==3){
 			//update e1
-			e1_can= R::rnorm(e1,varE);
+			e1_can= R::rnorm(e1,sqrt(varE));
 			if ((e1_can>=0) && (e1_can<=1)){
 				//calculate likelihood
 				sumcan=0;

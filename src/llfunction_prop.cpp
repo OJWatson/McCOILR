@@ -1,6 +1,8 @@
 #include "llfunction_prop.h"
 
-double logLike(int M, double P, double dataA1, double dataA2, double Strue, double gridA[][51], double gridB[][51], double c){
+double logLike(int M, double P, double dataA1, double dataA2, double Strue,
+               std::vector<std::vector<double> > &gridA, std::vector<std::vector<double> > &gridB, 
+               double c){
 
 	double llobs = 0;
 	double lltrue = 0.0;

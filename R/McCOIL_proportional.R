@@ -50,7 +50,7 @@ McCOIL_proportional = function(dataA1, dataA2, maxCOI = 25, totalrun = 10000, bu
     }
     
     ## summarize results
-    outputMCMC2 = read.table(paste(path, "/", output, sep = ""), head = F)
+    outputMCMC2 = read.table(paste(path, "/", output, sep = ""), header = F)
     meanM = as.numeric(round(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, mean)))
     meanP = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, mean))
     medianM = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, median))
