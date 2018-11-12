@@ -1,14 +1,14 @@
-## rdhs 1.2.0
+## McCOILR 1.2.0
 
 * `McCOIL_proportional_cpp()` correction so likelihoods use pass by reference, 
 so it's quick again. 
 
-## rdhs 1.1.0
+## McCOILR 1.1.0
 
 * `McCOIL_proportional_cpp()` now uses dynamically allocated containers and 
 can take larger dataset sizes as a result.
 
-## rdhs 1.0
+## McCOILR 1.0
 
 * Package release
 
