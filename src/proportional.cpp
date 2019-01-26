@@ -46,6 +46,7 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     std::string file_index = Rcpp::as<std::string>(paramList["file_index"]);
     std::string path = Rcpp::as<std::string>(paramList["path"]);	
     int err_method = Rcpp::as<int>(paramList["err_method0"]); //1: use pre-specified e1 and e2; 2: use likelihood-free sampling for e1 and e2; 3: update e1 and e2 according to likelihood (for 2 and 3, pre-specified e1 and e2 were used as initial values) 
+    int thin = Rcpp::as<int>(paramList["thin"]);
     
     ////read in the values////
     int M[(n+1)], Mcan[(n+1)], Maccept[(n+1)];
@@ -69,10 +70,10 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     //double Strue_can[(n+1)][(k+1)];
     std::vector<std::vector<int> > Strue_accept(n+1, std::vector<int>(k+1));
     //int Strue_accept[(n+1)][(k+1)];
-
+    
     int c_accept=0;
     double c_can;
-        double q1=0.0, q2=0.0; // unused variables to be commented out TODO: Comment all unuseds
+    double q1=0.0, q2=0.0; // unused variables to be commented out TODO: Comment all unuseds
     
     for (i=1;i<=n;i++){
         M[i]= M0[i-1];
@@ -273,12 +274,15 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
                 c_can= c;
             } //end update c
         }
+        
         //print this iteration
-        fprintf(V0,"%d", i);
-        for (x=1;x<=n;x++) fprintf(V0,"\t%d",  M[x]);
-        for (x=1;x<=k;x++) fprintf(V0,"\t%.6f", P[x]);
-        if (err_method==3) fprintf(V0,"\t%.6f", c);
-        fprintf(V0,"\n");		
+        if ( ((i % thin) == 0) || (i == iter) || (i == 1)) {
+            fprintf(V0,"%d", i);
+            for (x=1;x<=n;x++) fprintf(V0,"\t%d",  M[x]);
+            for (x=1;x<=k;x++) fprintf(V0,"\t%.6f", P[x]);
+            if (err_method==3) fprintf(V0,"\t%.6f", c);
+            fprintf(V0,"\n");	
+        }
     }
     
     fprintf(V0, "total_acceptance");
