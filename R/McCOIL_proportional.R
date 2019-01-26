@@ -13,10 +13,11 @@
 #' @param path The default is the current directory.
 #' @param output The name of output file. The default is output.txt.
 #' @param err_method The default is 1. 
-#' 1: use pre-specified epsilon; 
-#' 2: use likelihood-free sampling for epsilon; 
-#' 3: update epsilon according to likelihood (for 2 and 3, pre-specified epsilon was used as initial value) 
-#' 
+#'   1: use pre-specified epsilon; 
+#'   2: use likelihood-free sampling for epsilon; 
+#'   3: update epsilon according to likelihood (for 2 and 3, pre-specified epsilon was used as initial value) 
+#' @param thin Numeric for how much the chain is thinned. Default = 1, means every iteration is written to file. 
+#'   If it was 0.1 then every 10th iteration is written to file
 #' 
 #' @return summary of output as data.frame
 #' 
@@ -24,8 +25,20 @@
 
 
 McCOIL_proportional = function(dataA1, dataA2, maxCOI = 25, totalrun = 10000, burnin = 1000, 
-                               M0 = 15, epsilon = 0.02, err_method = 1, path = getwd(), output = "output.txt") {
+                               M0 = 15, epsilon = 0.02, err_method = 1, path = getwd(), output = "output.txt",
+                               thin = 1) {
     
+    
+    
+    # check thin
+    if (thin > 1 || thin <= 0) {
+        stop("thin is poorly chosen. must be >0 & <=1")
+    }
+    
+    # create the path if it does not exist
+    if (!dir.exists(path)) {
+        dir.create(path,recursive = TRUE)
+    }
     
     grid = beta_grid_25
     n = nrow(dataA1)
@@ -38,7 +51,7 @@ McCOIL_proportional = function(dataA1, dataA2, maxCOI = 25, totalrun = 10000, bu
     paramList <- list(max = as.integer(maxCOI), iter = as.integer(totalrun), n0 = as.integer(n), 
                       k0 = as.integer(k), A1 = as.double(A1), A2 = as.double(A2), M0 = as.integer(M0), P0 = as.double(P0), 
                       A = as.double(grid$A), B = as.double(grid$B), c0 = as.double(epsilon), file_index = as.character(output), 
-                      path = as.character(path), err_method0 = as.integer(err_method))
+                      path = as.character(path), err_method0 = as.integer(err_method), thin=round(1/thin))
     
     
     
@@ -50,29 +63,35 @@ McCOIL_proportional = function(dataA1, dataA2, maxCOI = 25, totalrun = 10000, bu
     }
     
     ## summarize results
-    outputMCMC2 = read.table(paste(path, "/", output, sep = ""), header = F)
-    meanM = as.numeric(round(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, mean)))
-    meanP = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, mean))
-    medianM = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, median))
-    medianP = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, median))
-    M975 = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, 
+    outputMCMC2 = read.table(paste(path, "/", output, sep = ""), header = F, stringsAsFactors = FALSE)
+    
+    # work out where new burnin is given thin
+    its <- as.numeric(head(outputMCMC2$V1,-1))
+    burnin <- which.max(its > 1000)
+    totalrun <- length(outputMCMC2$V1)-1
+    
+    meanM = as.numeric(round(apply(outputMCMC2[burnin:totalrun, (1:n) + 1], 2, mean)))
+    meanP = as.numeric(apply(outputMCMC2[burnin:totalrun, ((1:k) + n + 1)], 2, mean))
+    medianM = as.numeric(apply(outputMCMC2[burnin:totalrun, (1:n) + 1], 2, median))
+    medianP = as.numeric(apply(outputMCMC2[burnin:totalrun, ((1:k) + n + 1)], 2, median))
+    M975 = as.numeric(apply(outputMCMC2[burnin:totalrun, (1:n) + 1], 2, 
                             function(x) quantile(x, probs = 0.975)))
-    P975 = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, 
+    P975 = as.numeric(apply(outputMCMC2[burnin:totalrun, ((1:k) + n + 1)], 2, 
                             function(x) quantile(x, probs = 0.975)))
-    M025 = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2,
+    M025 = as.numeric(apply(outputMCMC2[burnin:totalrun, (1:n) + 1], 2,
                             function(x) quantile(x, probs = 0.025)))
-    P025 = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, 
+    P025 = as.numeric(apply(outputMCMC2[burnin:totalrun, ((1:k) + n + 1)], 2, 
                             function(x) quantile(x,  probs = 0.025)))
-    sdM = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, (1:n) + 1], 2, sd))
-    sdP = as.numeric(apply(outputMCMC2[(burnin + 1):totalrun, ((1:k) + n + 1)], 2, sd))
+    sdM = as.numeric(apply(outputMCMC2[burnin:totalrun, (1:n) + 1], 2, sd))
+    sdP = as.numeric(apply(outputMCMC2[burnin:totalrun, ((1:k) + n + 1)], 2, sd))
     
     
     if (err_method == 3) {
-        mean_e3 = as.numeric(mean(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)]))
-        median_e3 = as.numeric(median(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)]))
-        e3_975 = as.numeric(quantile(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)], probs = 0.975))
-        e3_025 = as.numeric(quantile(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)], probs = 0.025))
-        sd_e3 = as.numeric(sd(outputMCMC2[(burnin + 1):totalrun, (k + n + 2)]))
+        mean_e3 = as.numeric(mean(outputMCMC2[burnin:totalrun, (k + n + 2)]))
+        median_e3 = as.numeric(median(outputMCMC2[burnin:totalrun, (k + n + 2)]))
+        e3_975 = as.numeric(quantile(outputMCMC2[burnin:totalrun, (k + n + 2)], probs = 0.975))
+        e3_025 = as.numeric(quantile(outputMCMC2[burnin:totalrun, (k + n + 2)], probs = 0.025))
+        sd_e3 = as.numeric(sd(outputMCMC2[burnin:totalrun, (k + n + 2)]))
     }
     if ((err_method == 1) | (err_method == 2)) {
         output_sum = data.frame(cbind.data.frame(rep(output, (n + k)), c(rep("C", n), rep("P", k)),
