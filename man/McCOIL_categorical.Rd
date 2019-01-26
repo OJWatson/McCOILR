@@ -7,7 +7,7 @@
 McCOIL_categorical(data, maxCOI = 25, threshold_ind = 20,
   threshold_site = 20, totalrun = 10000, burnin = 1000, M0 = 15,
   e1 = 0.05, e2 = 0.05, err_method = 1, path = getwd(),
-  output = "output.txt")
+  output = "output.txt", thin = 1)
 }
 \arguments{
 \item{data}{An R data frame of SNP calling information. Row names are names of samples and column names are names of assays.}
@@ -36,6 +36,9 @@ McCOIL_categorical(data, maxCOI = 25, threshold_ind = 20,
 \item{path}{The default is the current directory.}
 
 \item{output}{The name of output file. The default is output.txt.}
+
+\item{thin}{Numeric for how much the chain is thinned. Default = 1, means every iteration is written to file. 
+If it was 0.1 then every 10th iteration is written to file}
 }
 \value{
 return summary of output as data.frame

@@ -6,7 +6,7 @@
 \usage{
 McCOIL_proportional(dataA1, dataA2, maxCOI = 25, totalrun = 10000,
   burnin = 1000, M0 = 15, epsilon = 0.02, err_method = 1,
-  path = getwd(), output = "output.txt")
+  path = getwd(), output = "output.txt", thin = 1)
 }
 \arguments{
 \item{dataA1}{The intensity of signals of allele 1 from the SNP assay. Row names are names of samples and column names are names of assays.}
@@ -31,6 +31,9 @@ McCOIL_proportional(dataA1, dataA2, maxCOI = 25, totalrun = 10000,
 \item{path}{The default is the current directory.}
 
 \item{output}{The name of output file. The default is output.txt.}
+
+\item{thin}{Numeric for how much the chain is thinned. Default = 1, means every iteration is written to file. 
+If it was 0.1 then every 10th iteration is written to file}
 }
 \value{
 summary of output as data.frame

@@ -6,7 +6,7 @@
 #' @title Wrapper for THE REAL McCOIL in Rcpp
 #' 
 #' @importFrom stats median quantile sd
-#' @importFrom utils read.table write.table
+#' @importFrom utils read.table write.table head
 #' 
 #' @useDynLib McCOILR
 #' 
