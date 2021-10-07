@@ -8,7 +8,7 @@ Maintainer: OJ Watson <o.watson15@imperial.ac.uk>
 Description: Wrapper for THE REAL McCOIL in Rcpp. Becuase R is easieR.
 License: MIT + file LICENSE
 Depends: 
-    R (>= 3.2.1)
+    R (>= 3.5.0)
 Imports:
     magrittr,
     Rcpp
