@@ -26,10 +26,10 @@ framework I use. All rights refer to the writers of the original c code.
 
 The package can be installed as follows, assuming devtools has been installed. 
 
-```{r Load package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+```{r Load_package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## first let's install the package
-devtools::install_github("OJWatson/McCOILR")
+# devtools::install_github("OJWatson/McCOILR")
 
 ## Load the package
 library(McCOILR)
