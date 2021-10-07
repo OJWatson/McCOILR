@@ -4,7 +4,6 @@
 \name{McCOILR}
 \alias{McCOILR}
 \alias{package-McCOILR}
-\alias{McCOILR-package}
 \title{Wrapper for THE REAL McCOIL in Rcpp}
 \description{
 Wrapper for THE REAL McCOIL in Rcpp, so that package can be more easily run on distributed computing services and cluster infrastructure.

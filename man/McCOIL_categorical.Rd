@@ -4,10 +4,21 @@
 \alias{McCOIL_categorical}
 \title{The Real McCOIL categorical method function}
 \usage{
-McCOIL_categorical(data, maxCOI = 25, threshold_ind = 20,
-  threshold_site = 20, totalrun = 10000, burnin = 1000, M0 = 15,
-  e1 = 0.05, e2 = 0.05, err_method = 1, path = getwd(),
-  output = "output.txt", thin = 1)
+McCOIL_categorical(
+  data,
+  maxCOI = 25,
+  threshold_ind = 20,
+  threshold_site = 20,
+  totalrun = 10000,
+  burnin = 1000,
+  M0 = 15,
+  e1 = 0.05,
+  e2 = 0.05,
+  err_method = 1,
+  path = getwd(),
+  output = "output.txt",
+  thin = 1
+)
 }
 \arguments{
 \item{data}{An R data frame of SNP calling information. Row names are names of samples and column names are names of assays.}
