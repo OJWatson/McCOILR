@@ -40,7 +40,7 @@ library(McCOILR)
 
 The package carries out the same 2 R functions as before, which are demonstrated below: 
 
-```{r Test Package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+```{r Test_Package, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## categorical test
 
@@ -84,7 +84,7 @@ output="output_test.txt" )
 The R functions now return the summary outputs, just for ease of looking at the 
 results:
 
-```{r View output, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
+```{r View_output, include=TRUE, message = FALSE, warning = FALSE,cache=TRUE}
 
 ## view summary data.frame for categorical
 str(out_cat)
