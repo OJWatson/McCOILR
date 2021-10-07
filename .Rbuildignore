@@ -12,3 +12,4 @@ tutorials
 ^.*\.RData$
 ^vignettes/.*output$
 ^.*\.rds$
+^McCOILR\.Rproj$
