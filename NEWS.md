@@ -1,3 +1,7 @@
+## McCOILR 1.3.1
+
+* Updates for `Rcpp` loading for vignette builds
+
 ## McCOILR 1.3.0
 
 * `McCOIL_proportional` and `McCOIL_categorical()` support thinning MCMC with
