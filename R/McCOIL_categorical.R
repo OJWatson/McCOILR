@@ -99,7 +99,7 @@ McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=
     
     # work out where new burnin is given thin
     its <- as.numeric(head(outputMCMC1$V1,-1))
-    burnin <- which.max(its > 1000)
+    burnin <- which.max(its > burnin)
     totalrun <- length(outputMCMC1$V1)-1
     
     meanM= as.numeric(round(apply(outputMCMC1[burnin:totalrun, (1:n)+1], 2, mean)))

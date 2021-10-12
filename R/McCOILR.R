@@ -7,6 +7,7 @@
 #' 
 #' @importFrom stats median quantile sd
 #' @importFrom utils read.table write.table head
+#' @importFrom Rcpp evalCpp
 #' 
 #' @useDynLib McCOILR
 #' 

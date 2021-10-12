@@ -10,3 +10,4 @@ src/*.dll
 plots
 check.RData
 *.rds
+cat_output

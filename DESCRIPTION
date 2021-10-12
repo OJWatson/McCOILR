@@ -17,6 +17,7 @@ Suggests:
     devtools,
     rmarkdown
 LinkingTo: Rcpp
+Encoding: UTF-8
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 SystemRequirements: C++11
