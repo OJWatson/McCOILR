@@ -71,13 +71,6 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("sodium")
-        shell: Rscript {0}
-
-      - name: Decrypt config and set ready for travis checks
-        run: |
-          writeBin(sodium::data_decrypt(readRDS("rdhs.json.tar.enc"), sodium::hash(charToRaw(Sys.getenv("KEY")))),"rdhs.json.tar")
-          unzip("rdhs.json.tar")
         shell: Rscript {0}
 
       - name: Check
