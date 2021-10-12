@@ -4,9 +4,19 @@
 \alias{McCOIL_proportional}
 \title{The Real McCOIL proportional method function}
 \usage{
-McCOIL_proportional(dataA1, dataA2, maxCOI = 25, totalrun = 10000,
-  burnin = 1000, M0 = 15, epsilon = 0.02, err_method = 1,
-  path = getwd(), output = "output.txt", thin = 1)
+McCOIL_proportional(
+  dataA1,
+  dataA2,
+  maxCOI = 25,
+  totalrun = 10000,
+  burnin = 1000,
+  M0 = 15,
+  epsilon = 0.02,
+  err_method = 1,
+  path = getwd(),
+  output = "output.txt",
+  thin = 1
+)
 }
 \arguments{
 \item{dataA1}{The intensity of signals of allele 1 from the SNP assay. Row names are names of samples and column names are names of assays.}

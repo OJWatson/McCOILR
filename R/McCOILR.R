@@ -7,8 +7,9 @@
 #' 
 #' @importFrom stats median quantile sd
 #' @importFrom utils read.table write.table head
+#' @importFrom Rcpp sourceCpp
 #' 
-#' @useDynLib McCOILR
+#' @useDynLib McCOILR, .registration = TRUE
 #' 
 #' @description Wrapper for THE REAL McCOIL in Rcpp, so that package can be more easily run on distributed computing services and cluster infrastructure. 
 #' 
