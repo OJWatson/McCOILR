@@ -3,7 +3,6 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R build status](https://github.com/OJWatson/McCOILR/workflows/R-CMD-check/badge.svg)](https://github.com/OJWatson/McCOILR/actions)
 [![Codecov test coverage](https://codecov.io/gh/OJWatson/McCOILR/branch/master/graph/badge.svg)](https://codecov.io/gh/OJWatson/McCOILR?branch=master)
-[![Documentation via pkgdown](https://github.com/OJWatson/McCOILR/raw/master/tools/pkgdownshield.png)](https://ojwatson.github.io/McCOILR/)
 
 ### What is this?
 
