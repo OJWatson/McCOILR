@@ -60,4 +60,4 @@ library(McCOILR)
 
 #### Asking a question
 
-For bug reports, feature requests, contributions, use github's [issue system.](https://github.com/OJWatson/McCOILR/issues)
+For bug reports, feature requests, contributions, use Github's [issue system.](https://github.com/OJWatson/McCOILR/issues)
