@@ -1,7 +1,7 @@
 # McCOILR
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R build status](https://github.com/OJWatson/McCOILR/workflows/R-CMD-check/badge.svg)](https://github.com/OJWatson/McCOILR/actions)
+![R-CMD-check](https://github.com/OJWatson/McCOILR/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)
 [![Codecov test coverage](https://codecov.io/gh/OJWatson/McCOILR/branch/master/graph/badge.svg)](https://codecov.io/gh/OJWatson/McCOILR?branch=master)
 
 ### What is this?
@@ -15,7 +15,7 @@ the original [project](https://github.com/Greenhouse-Lab/THEREALMcCOIL), and the
 this wrapper in the hope that it might be helpful for others, and have provided a tutorial for basic use.
 
 ***
-> To view the tutorial please click [here](https://ojwatson.github.io/McCOILR/articles/introduction.html).
+> To view the introduction tutorial please click [here](https://ojwatson.github.io/McCOILR/articles/introduction.html).
 
 ***
 
