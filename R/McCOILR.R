@@ -2,7 +2,6 @@
 #' 
 #' @name McCOILR
 #' @aliases McCOILR package-McCOILR
-#' @docType package
 #' @title Wrapper for THE REAL McCOIL in Rcpp
 #' 
 #' @importFrom stats median quantile sd

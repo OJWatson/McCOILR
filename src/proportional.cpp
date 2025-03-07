@@ -112,7 +112,7 @@ void McCOIL_proportional_cpp(Rcpp::List paramList) {
     
     ////output////
     char var_file[1000];
-    sprintf(var_file, "%s/%s", &path[0], &file_index[0]); 
+    snprintf(var_file, sizeof(var_file), "%s/%s", &path[0], &file_index[0]); 
     FILE *V0 = fopen(var_file, "w");
     
     ////MCMC////
