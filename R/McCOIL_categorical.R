@@ -95,7 +95,7 @@ McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=
     } else { stop(paste("Sample size is too small (n=", n, ", k=", k,").", sep=""))}
     
     ##summarize results
-    outputMCMC1 = read.table(paste(path, "/", output, sep=""), header=F,stringsAsFactors = FALSE)
+    outputMCMC1 = read.table(paste(path, "/", output, sep=""), header=F, stringsAsFactors = FALSE)
     
     # work out where new burnin is given thin
     its <- as.numeric(head(outputMCMC1$V1,-1))

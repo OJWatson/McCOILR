@@ -16,9 +16,11 @@ Suggests:
     knitr,
     devtools,
     rmarkdown,
-    qpdf
+    qpdf,
+    testthat (>= 3.0.0)
 LinkingTo: Rcpp
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 SystemRequirements: C++11
 Encoding: UTF-8
+Config/testthat/edition: 3
